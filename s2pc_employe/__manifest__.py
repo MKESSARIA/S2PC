@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base',
+    'depends': ['base', 'hr_contract',
                 'hr',
                 'hr_holidays',
                 's2pc_base'],
@@ -40,6 +40,7 @@
         'views/hr_employee_views_val_inherit.xml',
 
         'views/hr_employee.xml',
+        'views/hr_contract_view.xml',
     ],
     'assets': {
         'web._assets_primary_variables': [

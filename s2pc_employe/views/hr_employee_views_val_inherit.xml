@@ -24,6 +24,15 @@
                     <field name="mother_name"/>
                     <field name="tutor"/>
                 </field>
+                <xpath expr="//field[@name='emergency_phone']" position="attributes">
+                    <attribute name="placeholder">Veuillez mettre l'indication pays s'il vous plaît. (Ex : +261)</attribute>
+                </xpath>
+                <field name="emergency_phone" position="after">
+                    <field name="partner_name_urgence_contact" placeholder="Veuillez mettre l'indication pays s'il vous plaît. (Ex : +261)"/>
+                    <field name="parent_urgence_contact" placeholder="Veuillez mettre l'indication pays s'il vous plaît. (Ex : +261)"/>
+                    <field name="tutor_urgence_contact" placeholder="Veuillez mettre l'indication pays s'il vous plaît. (Ex : +261)"/>
+                    <field name="child_urgence_contact" placeholder="Veuillez mettre l'indication pays s'il vous plaît. (Ex : +261)"/>
+                </field>
                 <xpath expr="//page[@name='hr_settings']" position="after">
                     <page name="teams" string="Equipe" groups="s2pc_employe.group_hr_team_leave">
                         <field name="team_employee_ids">

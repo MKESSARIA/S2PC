@@ -17,6 +17,10 @@ class HrEmployee(models.Model):
     tutor = fields.Char('Tuteur/Tutrice', index=1)
     father_name = fields.Char('Nom du père', index=1)
     mother_name = fields.Char('Nom de la mère', index=1)
+    partner_name_urgence_contact = fields.Char('Téléphone Epoux/Epouse', index=1)
+    tutor_urgence_contact = fields.Char('Téléphone Tuteur/Tutrice', index=1)
+    parent_urgence_contact = fields.Char('Téléphone Parent', index=1)
+    child_urgence_contact = fields.Char('Téléphone Enfant', index=1)
     children_ids = fields.One2many('hr.child', 'employe_id', string="Enfants à charge")
     certificate_level = fields.Selection([
         ('primaire', 'Etudes primaires'),
@@ -42,4 +46,8 @@ class HrEmployeePublic(models.Model):
     tutor = fields.Char(readonly=True)
     father_name = fields.Char(readonly=True)
     mother_name = fields.Char(readonly=True)
+    partner_name_urgence_contact = fields.Char(readonly=True)
+    tutor_urgence_contact = fields.Char(readonly=True)
+    parent_urgence_contact = fields.Char(readonly=True)
+    child_urgence_contact = fields.Char(readonly=True)
 
