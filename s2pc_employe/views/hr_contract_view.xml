@@ -10,6 +10,10 @@
                 <xpath expr="//field[@name='hr_responsible_id']" position="after">
                     <field name="contrat_categorie"/>
                 </xpath>
+                <xpath expr="//page[@name='information']" position="attributes">
+                    <attribute name="string"> Informations sur les rémunérations </attribute>
+
+                </xpath>
                 <xpath expr="//page[@name='information']" position="inside">
                     <group name="salary_info">
                         <group>
