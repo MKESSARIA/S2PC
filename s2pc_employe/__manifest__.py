@@ -23,7 +23,7 @@
     'depends': ['base', 'hr_contract',
                 'hr',
                 'hr_holidays',
-                's2pc_base'],
+                's2pc_base', 'hr_payroll'],
 
     # always loaded
     'data': [

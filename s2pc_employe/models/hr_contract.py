@@ -9,7 +9,7 @@ class HrContractInherit(models.Model):
          ('stagiaire', 'Stagiaire')], string='Categorie de contrat', default="cdi",
         required=True, )
     hour_per_week = fields.Float(
-        string="Nombre d'heures travaillé par semaine",
+        string="Nombre d'heures travaillé par semaine", related="resource_calendar_id.full_time_required_hours",
         required=True)
     base_salary = fields.Monetary('Salaire de base mensuel')
     hourly_salary = fields.Monetary('Salaire horaire ', compute='_get_hourly_salary')
@@ -22,6 +22,6 @@ class HrContractInherit(models.Model):
     def _get_hourly_salary(self):
         for rec in self:
             if rec.hour_per_week:
-                rec.hourly_salary = rec.base_salary / ((rec.hour_per_week * 40) / 12)
+                rec.hourly_salary = rec.base_salary / ((rec.hour_per_week * 52) / 12)
             else:
                 rec.hourly_salary = 0
