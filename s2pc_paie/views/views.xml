@@ -140,7 +140,7 @@
                             <thead>
                                 <th class="w-25"><strong>Salaire de base</strong></th>
                                 <th style="color:#000000" class="w-25">
-                                    <span t-esc="o.contract_id._get_contract_wage()"
+                                    <span t-esc="o.contract_id.base_salary"
                                           t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}"/>
                                 </th>
                                 <!--<th class="w-25"></th>
@@ -168,7 +168,7 @@
                                 </thead>
                                 <tbody class="invoice-body">
                                     <span t-foreach="o.worked_days_line_ids" t-as="worked_days">
-                                        <t t-if="worked_days.code != 'OUT'">
+                                        <t t-if="worked_days.code != 'OUT' and  worked_days.code != 'WORK100'">
                                             <tr style="color:none">
                                                 <td>
                                                     <span t-field="worked_days.name"/>
