@@ -89,6 +89,7 @@
                             <t t-else="">
                                 <span>1000150227 du 01/04/2003</span>
                             </t>
+                            <br/>
                             <!-- -->
                             <span>STAT:</span>
                             <t t-if="o.company_id.partner_id.STAT">
@@ -162,6 +163,29 @@
                                     <span t-field="o.partner_id.CIF"/>
                                 </div>
                             </div>
+                            <div class="row">
+                                <table class="invoice-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Mode de règlement</th>
+                                            <th>Echéance</th>
+                                            <th>V/Id CEE</th>
+
+                                        </tr>
+
+                                    </thead>
+                                    <tbody class="invoice-body">
+                                        <tr>
+                                            <td t-esc="o.payment_reference"></td>
+                                            <td t-esc="o.invoice_date_due"></td>
+                                            <td></td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+
 
                         </div>
 
@@ -426,38 +450,68 @@
                                 <div class="col-3">
                                     <span>Adresse:</span>
                                 </div>
-                                <div class="col-6">
-                                    <table class="table-address">
-                                        <tbody>
+                                <div class="col-9">
+                                    <table>
+                                        <div>
                                             <t t-if="o.partner_id.city">
-                                                <tr>
-                                                    <td>
-                                                        <span t-esc="o.partner_id.city"/>
-                                                    </td>
-                                                </tr>
+
+                                                <span t-esc="o.partner_id.city"/>
+
                                             </t>
-                                            <t t-if="o.partner_id.street">
-                                                <tr>
-                                                    <td>
-                                                        <span t-esc="o.partner_id.street"/>
-                                                    </td>
-                                                </tr>
-                                            </t>
-                                            <tr>
-                                                <td>
-                                                    <span>NIF:</span>
-                                                    <span t-esc="o.partner_id.vat"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <span>STAT:</span>
-                                                    <span t-esc="o.partner_id.STAT"/>
-                                                </td>
-                                            </tr>
-                                        </tbody>
+                                            <div t-if="o.partner_id.street">
+
+                                                <span t-esc="o.partner_id.street"/>
+
+                                            </div>
+                                        </div>
                                     </table>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <span>NIF:</span>
+                                </div>
+                                <div class="col-6">
+                                    <span t-field="o.partner_id.vat"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <span>STAT:</span>
+                                </div>
+                                <div class="col-6">
+                                    <span t-field="o.partner_id.STAT"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <span>CIF:</span>
+                                </div>
+                                <div class="col-6">
+                                    <span t-field="o.partner_id.CIF"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <table class="invoice-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Mode de règlement</th>
+                                            <th>Echéance</th>
+                                            <th>V/Id CEE</th>
+
+                                        </tr>
+
+                                    </thead>
+                                    <tbody class="invoice-body">
+                                        <tr>
+                                            <td t-esc="o.payment_reference"></td>
+                                            <td t-esc="o.invoice_date_due"></td>
+                                            <td></td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
                             </div>
                         </div>
 
