@@ -90,7 +90,7 @@
                                 <span>1000150227 du 01/04/2003</span>
                             </t>
                             <br/>
-                            
+
                             <span>STAT:</span>
                             <t t-if="o.company_id.partner_id.STAT">
                                 <span t-esc="o.company_id.partner_id.STAT"/>
