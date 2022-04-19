@@ -19,13 +19,14 @@
 
     # any module necessary for this one to work correctly
     'depends': ['base', 's2pc_base', 's2pc_product', 'sale', 'sales_team', 'hr', 'purchase', 'mass_mailing',
-                'maintenance'],
+                'maintenance', 'hr_appraisal'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'views/res_groups.xml',
         'views/menu_access.xml',
+        'views/model_access.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
