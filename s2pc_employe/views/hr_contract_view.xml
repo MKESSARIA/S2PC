@@ -28,7 +28,7 @@
                                 <field name="hourly_salary" nolabel="1"/>
                                 <span> / heure</span>
                             </div>
-                            <field name="extra_hours"/>
+
                             <field name="allow_meal"/>
                             <field name="allow_transport"/>
                             <field name="allow_houssing"/>

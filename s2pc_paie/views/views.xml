@@ -124,7 +124,16 @@
                             <tbody class="invoice-body">
                                 <td><span t-field="o.employee_id.first_contract_date"/></td>
                                 <td><span t-field="o.employee_id.contract_id.contract_type_id"/></td>
-                                <td><span t-field="o.employee_id.contract_id.hours_per_week"/></td>
+                                <td>
+                                    <t t-if="o.employee_id.contract_id.hours_per_week == 40.0">
+                                        <span>173,33 (40h/semaine)</span>
+                                    </t>
+                                    <t t-if="o.employee_id.contract_id.hours_per_week == 56.0">
+                                        <span>242,66 (56h/semaine)</span>
+                                    </t>
+
+
+                                </td>
                                 <td class="w-25" name="company-car-model"></td>
                             </tbody>
 

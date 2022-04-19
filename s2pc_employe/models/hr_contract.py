@@ -13,7 +13,6 @@ class HrContractInherit(models.Model):
         required=True)
     base_salary = fields.Monetary('Salaire de base mensuel')
     hourly_salary = fields.Monetary('Salaire horaire ', compute='_get_hourly_salary')
-    extra_hours = fields.Monetary('Rémunération des heures supplémentaires')
     allow_meal = fields.Monetary('Indemnité cantine')
     allow_transport = fields.Monetary('Indemnité transport')
     allow_houssing = fields.Monetary('Indemnité logement')
