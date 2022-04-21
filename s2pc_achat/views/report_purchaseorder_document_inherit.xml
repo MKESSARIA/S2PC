@@ -169,6 +169,7 @@
                             <thead style="display: table-row-group">
                                 <tr>
                                     <th name="th_description" class="text-center">Réf.</th>
+                                    <th name="th_description" class="text-center">Article</th>
                                     <th name="th_description" class="text-center">Désignation</th>
                                     <th name="th_description" class="text-center">Unité</th>
                                     <th name="th_quantity" class="text-center">Qté</th>
@@ -186,8 +187,8 @@
                                 </tr>
                             </thead>
                             <tbody class="invoice-body">
-                                <t t-if="len(o.order_line) &lt; 8" t-set="line_range" t-value="8"/>
-                                <t t-else="not len(o.order_line) &lt; 8" t-set="line_range"
+                                <t t-if="len(o.order_line) &lt; 6" t-set="line_range" t-value="6"/>
+                                <t t-else="not len(o.order_line) &lt; 6" t-set="line_range"
                                    t-value="len(o.order_line)"/>
 
                                 <t t-set="current_subtotal" t-value="0"/>
@@ -200,6 +201,7 @@
                                         <t t-if="not o.order_line[line].display_type">
                                             <td name="td_name"><span
                                                     t-field="o.order_line[line].product_id.default_code"/></td>
+                                            <td name="td_name"><span t-field="o.order_line[line].product_id"/></td>
                                             <td name="td_name"><span t-field="o.order_line[line].name"/></td>
                                             <td name="td_quantity" class="text-right">
 
@@ -266,6 +268,9 @@
                                         <td>
                                             <br/>
                                         </td>
+                                        <td>
+                                            <br/>
+                                        </td>
 
                                     </tr>
 
@@ -274,6 +279,7 @@
                             </tbody>
                             <tbody class="invoice-total">
                                 <tr>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -295,6 +301,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    <td></td>
                                     <td class="allow_border">Montant TVA</td>
                                     <td class="allow_border">
                                         <span t-esc="o.amount_tax" t-options='{"widget": "float", "precision": 2}'/>
@@ -302,6 +309,7 @@
 
                                 </tr>
                                 <tr>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
