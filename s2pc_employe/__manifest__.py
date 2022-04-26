@@ -41,6 +41,7 @@
 
         'views/hr_employee.xml',
         'views/hr_contract_view.xml',
+        'views/templates.xml'
     ],
     'assets': {
         'web._assets_primary_variables': [

@@ -14,7 +14,7 @@ class ModelName(models.Model):
             total = 0
             for qtt in rec.bom_line_ids:
                 total = total + qtt.product_qty
-            if not total == 100:
+            if total not in [0, 100]:
                 raise ValidationError(_("La somme des quantités des produits doit être à 100 au lieu de {}").format(
                     total))
         return True
