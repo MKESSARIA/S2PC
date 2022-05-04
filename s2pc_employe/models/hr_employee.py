@@ -6,22 +6,22 @@ from odoo import models, fields, api
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
-    cnaps_number = fields.Char('Numero CNAPS', index=1)
+    cnaps_number = fields.Char('Numero CNAPS', store=1)
     team_employee_ids = fields.Many2many('hr.employee', 'hr_employee_team_rel', 'manager_id', 'employee_id', 'Team')
     langue = fields.Selection(
         [('english', 'Anglais'),
          ('french', 'Français'),
          ('malgace', 'Malagasy')],
         'Langue')
-    partner_name = fields.Char('Epoux/Epouse', index=1)
-    tutor = fields.Char('Tuteur/Tutrice', index=1)
-    father_name = fields.Char('Nom du père', index=1)
-    mother_name = fields.Char('Nom de la mère', index=1)
-    partner_name_urgence_contact = fields.Char('Téléphone Epoux/Epouse', index=1)
-    tutor_urgence_contact = fields.Char('Téléphone Tuteur/Tutrice', index=1)
-    parent_urgence_contact = fields.Char('Téléphone Parent', index=1)
-    child_urgence_contact = fields.Char('Téléphone Enfant', index=1)
-    children_ids = fields.One2many('hr.child', 'employe_id', string="Enfants à charge")
+    partner_name = fields.Char('Epoux/Epouse', store=1)
+    tutor = fields.Char('Tuteur/Tutrice', store=1)
+    father_name = fields.Char('Nom du père', store=1)
+    mother_name = fields.Char('Nom de la mère', store=1)
+    partner_name_urgence_contact = fields.Char('Téléphone Epoux/Epouse', store=1)
+    tutor_urgence_contact = fields.Char('Téléphone Tuteur/Tutrice', store=1)
+    parent_urgence_contact = fields.Char('Téléphone Parent', store=1)
+    child_urgence_contact = fields.Char('Téléphone Enfant', store=1)
+    children_ids = fields.One2many('hr.child', 'employe_id', string="Enfants à charge", store=1)
     certificate_level = fields.Selection([
         ('primaire', 'Etudes primaires'),
         ('secondaire', 'Etudes secondaires'),
