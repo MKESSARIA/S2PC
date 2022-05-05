@@ -10,10 +10,11 @@ class ModelName(models.Model):
     @api.constrains('bom_line_ids')
     def block_bom(self):
         for rec in self:
-            total = 0
+            list_qtt = [0]
             for qtt in rec.bom_line_ids:
                 qtt_round = round(qtt.product_qty, 4)
-                total = round(total, 4) + round(qtt_round, 4)
+                list_qtt.append(qtt_round)
+            total = sum(list_qtt)
             if total not in [0, 100]:
                 raise ValidationError(_("La somme des quantités des produits doit être à 100 au lieu de {}").format(
                     total))
