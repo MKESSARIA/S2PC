@@ -5,8 +5,7 @@ from odoo.exceptions import ValidationError
 class ModelName(models.Model):
     _inherit = 'mrp.bom'
     product_qty = fields.Float(
-        'Quantity', default=100,
-        digits='Unit of Measure', required=True)
+        'Quantity', default=100, required=True)
 
     @api.constrains('bom_line_ids')
     def block_bom(self):
