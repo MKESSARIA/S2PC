@@ -14,7 +14,7 @@ class ModelName(models.Model):
             total = 0
             for qtt in rec.bom_line_ids:
                 qtt_round = round(qtt.product_qty, 4)
-                total = total + qtt_round
+                total = round(total, 4) + round(qtt_round, 4)
             if total not in [0, 100]:
                 raise ValidationError(_("La somme des quantités des produits doit être à 100 au lieu de {}").format(
                     total))
