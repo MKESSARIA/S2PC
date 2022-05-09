@@ -196,7 +196,12 @@
 
                                     <td t-esc="o.move_ids_without_package[r].product_id.default_code or ''"/>
                                     <td t-esc="o.move_ids_without_package[r].product_id.display_name"/>
-                                    <td t-esc="o.move_ids_without_package[r].lot_ids[0].name"/>
+                                    <t t-if="o.move_ids_without_package[r].lot_ids">
+                                        <td t-esc="o.move_ids_without_package[r].lot_ids[0].name"/>
+                                    </t>
+                                    <t t-else="">
+                                        <td><span></span></td>
+                                    </t>
                                     <td t-esc="o.move_ids_without_package[r].product_uom_qty" class="text-right"/>
                                     <td t-esc="o.get_moves_report_values().get(o.move_ids_without_package[r], {}).get('price_unit', '')"
                                         t-options='{"widget": "float", "precision": 2}' class="text-right"/>
