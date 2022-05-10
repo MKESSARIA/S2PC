@@ -152,8 +152,11 @@
                                 <th style="width:10%">
                                     <span>Ref.</span>
                                 </th>
-                                <th style="width:30%">
+                                <th style="width:20%">
                                     <span>Désignation</span>
+                                </th>
+                                <th style="width:10%">
+                                    <span>Lot</span>
                                 </th>
                                 <th style="width:7%">
                                     <span>Qté</span>
@@ -178,7 +181,14 @@
                                 <tr t-if="int(r) &lt; len(o.invoice_line_ids)">
 
                                     <td t-esc="o.invoice_line_ids[r].product_id.default_code or ''"></td>
-                                    <td t-esc="o.invoice_line_ids[r].product_id.name"></td>
+                                    <td t-esc="o.invoice_line_ids[r].product_id.display_name"></td>
+                                    <t t-if="o.get_lot_number(o.invoice_line_ids[r].move_id.invoice_origin, o.invoice_line_ids[r].product_id)">
+                                        <t t-set="bl_id" t-value="o.get_lot_number(o.invoice_line_ids[r].move_id.invoice_origin, o.invoice_line_ids[r].product_id)" />
+                                        <td t-esc="bl_id"/>
+                                    </t>
+                                    <t t-else="">
+                                        <td><span></span></td>
+                                    </t>
                                     <td t-esc="o.invoice_line_ids[r].quantity"></td>
                                     <td t-esc="o.invoice_line_ids[r].price_unit"
                                         t-options='{"widget": "float", "precision": 2}'></td>
@@ -210,12 +220,16 @@
                                     <td>
                                         <br/>
                                     </td>
+                                    <td>
+                                        <br/>
+                                    </td>
                                 </tr>
 
                             </t>
                         </tbody>
                         <tbody class="invoice-total">
                             <tr>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td colspan="2" class="allow_border">Montant HT</td>
@@ -232,6 +246,7 @@
                             <tr>
                                 <td></td>
                                 <td></td>
+                                <td></td>
                                 <td colspan="2" class="allow_border">Montant TVA</td>
                                 <td class="allow_border">
                                     <span t-esc="o.amount_tax" t-options='{"widget": "float", "precision": 2}'/>
@@ -240,6 +255,7 @@
                                 <td></td>
                             </tr>
                             <tr>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td colspan="2" class="allow_border">Montant TTC</td>

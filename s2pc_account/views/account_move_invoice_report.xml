@@ -230,7 +230,7 @@
                                 <tr t-if="int(r) &lt; len(o.invoice_line_ids)">
 
                                     <td t-esc="o.invoice_line_ids[r].product_id.default_code or ''"></td>
-                                    <td t-esc="o.invoice_line_ids[r].product_id.name"></td>
+                                    <td t-esc="o.invoice_line_ids[r].product_id.display_name"></td>
                                     <td t-esc="o.invoice_line_ids[r].quantity"></td>
                                     <td t-esc="o.invoice_line_ids[r].price_unit"
                                         t-options='{"widget": "float", "precision": 2}'></td>
@@ -565,7 +565,7 @@
                                 <tr t-if="int(r) &lt; len(o.invoice_line_ids)">
 
                                     <td t-esc="o.invoice_line_ids[r].product_id.default_code or ''"></td>
-                                    <td t-esc="o.invoice_line_ids[r].product_id.name"></td>
+                                    <td t-esc="o.invoice_line_ids[r].product_id.display_name"></td>
                                     <td t-esc="o.invoice_line_ids[r].quantity"></td>
                                     <td t-esc="o.invoice_line_ids[r].price_unit"
                                         t-options='{"widget": "float", "precision": 2}'></td>
