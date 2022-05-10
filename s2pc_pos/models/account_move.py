@@ -14,7 +14,7 @@ class AccountMove(models.Model):
 
     def get_lot_number(self, name, product_id):
         """
-            get BL id
+            get LOT id
         """
         id_bl = []
         lot = ""
