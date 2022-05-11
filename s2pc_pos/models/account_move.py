@@ -12,17 +12,17 @@ class AccountMove(models.Model):
         for rec in self:
             rec.amount_total_text = amount_to_text_fr(rec.amount_total, rec.currency_id.currency_unit_label)
 
-    def get_lot_number(self, name, product_id):
+    def get_lot_number(self, name_origin, product_id_origin):
         """
             get LOT id
         """
         id_bl = []
         lot = ""
 
-        bc = self.env['sale.order'].search([('name', '=', name)])
-        pc = self.env['pos.order'].search([('name', '=', name)])
+        bc = self.env['sale.order'].search([('name', '=', name_origin)])
+        pc = self.env['pos.order'].search([('name', '=', name_origin)])
 
-        if bc[0]:
+        if len(bc) > 0:
             bl = self.env['stock.picking'].search([('origin', '=', bc.name)])
         else:
             bl = self.env['stock.picking'].search([('origin', '=', pc.name)])
@@ -31,7 +31,7 @@ class AccountMove(models.Model):
             id_bl.append(i)
         if id_bl[0]:
             for line in id_bl[0].move_ids_without_package:
-                if line.product_id == product_id:
+                if line.product_id == product_id_origin:
                     lot = line.lot_ids[0].name
         else:
             lot = ""
