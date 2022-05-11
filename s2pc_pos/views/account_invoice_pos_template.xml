@@ -177,6 +177,9 @@
 
                         </thead>
                         <tbody class="invoice-body">
+                            <t t-if="len(o.invoice_line_ids) &lt; 7" t-set="line_range" t-value="7"/>
+                            <t t-else="not len(o.invoice_line_ids) &lt; 7" t-set="line_range"
+                               t-value="len(o.invoice_line_ids)"/>
                             <t t-foreach="range(line_range)" t-as="r">
                                 <tr t-if="int(r) &lt; len(o.invoice_line_ids)">
 

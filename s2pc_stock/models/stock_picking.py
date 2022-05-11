@@ -50,7 +50,7 @@ class StockPicking(models.Model):
 				result[move]['price_unit'] = 0
 				result[move]['price_subtotal'] = 0
 			result[move]['package_count'] = len(list(set(move.move_line_ids.mapped('result_package_id'))))
-			result[move]['weight'] = move.product_id.weight * move.product_uom_qty
+			result[move]['weight'] = move.product_id.weight
 			total_amount = 0
 		total_package_count = 0
 		total_weight = 0
@@ -68,5 +68,7 @@ class StockPicking(models.Model):
 		if self.partner_id.parent_id:
 			return self.partner_id.parent_id
 		return self.partner_id
+
+
 
 

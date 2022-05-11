@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'stock', 'stock_enterprise', 's2pc_base'],
+    'depends': ['base', 'stock', 'stock_enterprise', 's2pc_base', 'sale_stock'],
 
     # always loaded
     'data': [

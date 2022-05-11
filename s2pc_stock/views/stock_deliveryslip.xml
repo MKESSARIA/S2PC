@@ -158,6 +158,8 @@
                     </div>
                     <br/>
                     <table class="picking-table">
+                        <t t-set="has_serial_number" t-value="o.move_line_ids.mapped('lot_id')"
+                           groups="stock.group_lot_on_delivery_slip"/>
                         <thead>
                             <tr>
                                 <th style="width:10%">
@@ -187,34 +189,41 @@
                             </tr>
 
                         </thead>
-                        <tbody class="picking-body">
-                            <t t-if="len(o.move_ids_without_package) &lt; 12" t-set="line_range" t-value="12"/>
-                            <t t-else="not len(o.move_ids_without_package) &lt; 12" t-set="line_range"
-                               t-value="len(o.move_ids_without_package)"/>
-                            <t t-foreach="range(int(line_range))" t-as="r">
-                                <tr t-if="int(r) &lt; len(o.move_ids_without_package)">
 
-                                    <td t-esc="o.move_ids_without_package[r].product_id.default_code or ''"/>
-                                    <td t-esc="o.move_ids_without_package[r].product_id.display_name"/>
-                                    <t t-if="o.move_ids_without_package[r].lot_ids">
-                                        <td t-esc="o.move_ids_without_package[r].lot_ids[0].name"/>
+                        <tbody class="picking-body">
+                            <t t-if="len(o.move_line_ids) &lt; 7" t-set="line_range" t-value="7"/>
+                            <t t-else="not len(o.move_line_ids) &lt; 7" t-set="line_range"
+                               t-value="len(o.move_line_ids)"/>
+                            <t t-foreach="range(int(line_range))" t-as="r">
+                                <tr t-if="int(r) &lt; len(o.move_line_ids)">
+
+                                    <td t-esc="o.move_line_ids[r].product_id.default_code or ''"/>
+                                    <td t-esc="o.move_line_ids[r].product_id.display_name"/>
+                                    <t t-if="o.move_line_ids[r].lot_id">
+                                        <td>
+
+                                            <span t-esc="o.move_line_ids[r].lot_id.name">||</span>
+
+                                        </td>
+
+
                                     </t>
                                     <t t-else="">
                                         <td><span></span></td>
                                     </t>
-                                    <td t-esc="o.move_ids_without_package[r].product_uom_qty" class="text-right"/>
-                                    <td t-esc="o.get_moves_report_values().get(o.move_ids_without_package[r], {}).get('price_unit', '')"
+                                    <td t-esc="o.move_line_ids[r].qty_done" class="text-right"/>
+                                    <td t-esc="o.get_moves_report_values().get(o.move_line_ids[r].move_id, {}).get('price_unit', '')"
                                         t-options='{"widget": "float", "precision": 2}' class="text-right"/>
                                     <td
-                                            t-esc="o.get_moves_report_values().get(o.move_ids_without_package[r], {}).get('price_subtotal', '')"
+                                            t-esc="o.move_line_ids[r].qty_done * o.get_moves_report_values().get(o.move_line_ids[r].move_id, {}).get('price_unit', '')"
                                             t-options='{"widget": "float", "precision": 2}' class="text-right"/>
                                     <td
-                                            t-esc="o.get_moves_report_values().get(o.move_ids_without_package[r], {}).get('package_count', '') or ''"
+                                            t-esc="o.get_moves_report_values().get(o.move_line_ids[r].move_id, {}).get('package_count', '') or ''"
                                             class="text-right"/>
-                                    <td t-esc="o.get_moves_report_values().get(o.move_ids_without_package[r], {}).get('weight', '') or ''"
+                                    <td t-esc="o.get_moves_report_values().get(o.move_line_ids[r].move_id, {}).get('weight', '') * o.move_line_ids[r].qty_done or ''"
                                         class="text-right"/>
                                 </tr>
-                                <tr t-if="not int(r) &lt; len(o.move_ids_without_package)">
+                                <tr t-if="not int(r) &lt; len(o.move_line_ids)">
                                     <!-- Fill blank row since height style doesn't work in PDF report -->
                                     <td>
                                         <br/>
@@ -256,7 +265,13 @@
                                     <span t-esc="o.get_moves_report_values().get('total_package_count', '')"/>
                                 </td>
                                 <td class="text-right allow_border">
-                                    <span t-esc="o.get_moves_report_values().get('total_weight', '')"/>
+                                    <t t-set="total_weight" t-value="0"/>
+                                    <t t-foreach="o.move_line_ids" t-as="wgt">
+                                        <t t-set="total_weight"
+                                           t-value="total_weight + (o.get_moves_report_values().get(wgt.move_id, {}).get('weight', '') * wgt.qty_done)"/>
+                                    </t>
+                                    <span t-esc="total_weight"/>
+
                                 </td>
 
                             </tr>
@@ -296,7 +311,7 @@
                                 <td class="check-conform">NON</td>
                             </tr>
                             <tr>
-                                <t t-foreach="o.move_ids_without_package" t-as="line">
+                                <t t-foreach="o.move_line_ids" t-as="line">
                                     <tr>
                                         <td t-esc="line.product_id.name" style="text-align: left"></td>
                                         <td></td>
