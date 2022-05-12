@@ -162,9 +162,6 @@
                            groups="stock.group_lot_on_delivery_slip"/>
                         <thead>
                             <tr>
-                                <th style="width:10%">
-                                    <span>Ref.</span>
-                                </th>
                                 <th style="width:20%">
                                     <span>Désignation</span>
                                 </th>
@@ -196,8 +193,6 @@
                                t-value="len(o.move_line_ids)"/>
                             <t t-foreach="range(int(line_range))" t-as="r">
                                 <tr t-if="int(r) &lt; len(o.move_line_ids)">
-
-                                    <td t-esc="o.move_line_ids[r].product_id.default_code or ''"/>
                                     <td t-esc="o.move_line_ids[r].product_id.display_name"/>
                                     <t t-if="o.move_line_ids[r].lot_id">
                                         <td>
@@ -246,16 +241,13 @@
                                     <td>
                                         <br/>
                                     </td>
-                                    <td>
-                                        <br/>
-                                    </td>
                                 </tr>
 
                             </t>
                         </tbody>
                         <tbody class="invoice-total">
                             <tr>
-                                <td colspan="5" class="text-right">
+                                <td colspan="4" class="text-right">
                                     <span style="text-align: left">TOTAL (Montant | Nbr colis | Pois kg)</span>
                                 </td>
                                 <td class="text-right allow_border">
