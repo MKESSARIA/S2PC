@@ -162,7 +162,7 @@
                            groups="stock.group_lot_on_delivery_slip"/>
                         <thead>
                             <tr>
-                                <th style="width:31%">
+                                <th style="width:43%">
                                     <span>Désignation</span>
                                 </th>
                                 <th style="width:10%">
@@ -177,10 +177,10 @@
                                 <th style="width:16%">
                                     <span>Montant</span>
                                 </th>
-                                <th style="width:16%">
-                                    <span>Nbre colis</span>
+                                <th style="width:7%">
+                                    <span>Nb colis</span>
                                 </th>
-                                <th style="width:10%">
+                                <th style="width:7%">
                                     <span>Poids</span>
                                 </th>
                             </tr>
@@ -251,7 +251,7 @@
                                     <span style="text-align: left">TOTAL (Montant | Nbr colis | Pois kg)</span>
                                 </td>
                                 <td class="text-right allow_border">
-                                    <span t-esc="o.get_moves_report_values().get('total_amount', '')"/>
+                                    <span t-esc="o.get_moves_report_values().get('total_amount', '')" t-options='{"widget": "float", "precision": 2}'/>
                                 </td>
                                 <td class="text-right allow_border">
                                     <span t-esc="o.get_moves_report_values().get('total_package_count', '')"/>
@@ -305,7 +305,7 @@
                             <tr>
                                 <t t-foreach="o.move_line_ids" t-as="line">
                                     <tr>
-                                        <td t-esc="line.product_id.name" style="text-align: left"></td>
+                                        <td t-esc="line.product_id.display_name" style="text-align: left"></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
