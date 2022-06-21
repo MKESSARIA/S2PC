@@ -162,10 +162,10 @@
                            groups="stock.group_lot_on_delivery_slip"/>
                         <thead>
                             <tr>
-                                <th style="width:43%">
+                                <th style="width:40%">
                                     <span>Désignation</span>
                                 </th>
-                                <th style="width:10%">
+                                <th style="width:13%">
                                     <span>Lot</span>
                                 </th>
                                 <th style="width:7%">
