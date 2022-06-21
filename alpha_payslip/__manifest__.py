@@ -28,6 +28,7 @@
         "views/hr_payslip.xml",
         "views/hr_contract_view_too.xml",
         "views/hr_salary_rule_views.xml",
+        "views/company.xml",
     ],
     # only loaded in demonstration mode
     "demo": [

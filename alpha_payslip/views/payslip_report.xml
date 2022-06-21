@@ -59,6 +59,7 @@
 
 
                                             <t t-if="o.company_id.email">
+                                                <br/>
                                                 <span>Mail:</span>
                                                 <span t-esc="o.company_id.email"/>
                                             </t>
