@@ -9,9 +9,9 @@
                 <field name="children" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </field>
-                <field name="work_location_id" position="after">
+                <!--<field name="work_location_id" position="after">
                     <field name="cnaps_number"/>
-                </field>
+                </field>-->
                 <field name="lang" position="replace">
                     <field name="langue"/>
                 </field>
