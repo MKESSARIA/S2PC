@@ -99,6 +99,7 @@
                                 <span>20221 31 1992 0 00021</span>
                             </t>
                             <br/>
+                            <span>CIF: 0112597/DGI-J du 09/06/2022</span>
 
                         </div>
                         <div class="col-6" style="padding-top:50px">
@@ -428,6 +429,8 @@
                             <t t-else="">
                                 <span>1000150227 du 01/04/2003</span>
                             </t>
+                            <br/>
+                            <span>CIF: 0112597/DGI-J du 09/06/2022</span>
                         </div>
                         <div class="col-6" style="padding-top:50px">
                             <div class="row">
