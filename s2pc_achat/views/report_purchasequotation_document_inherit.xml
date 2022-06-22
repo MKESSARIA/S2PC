@@ -38,6 +38,8 @@
                                     <span>+261 32 05 707 91 / +261 32 07 184 88</span>
                                 </t>
                                 <br/>
+                                <span>Tel: +261 34 54 723 82 / +261 34 94 455 63</span>
+                                <br/>
                                 <span>Mail:</span>
                                 <t t-if="o.company_id.email">
                                     <span t-esc="o.company_id.email"/>
@@ -52,7 +54,7 @@
                                 <span>Bâtiment PRICE PLAZA 2, Andraharo</span>
                                 <br/>
                                 <span>Tel:</span>
-                                <span>+261 32 05 707 97</span>
+                                <span>+261 32 05 707 97 / +261 38 61 846 16</span>
                                 <br/>
                                 <span>Mail:</span>
                                 <span>commercial.tana@s2pc.mg</span>
@@ -61,20 +63,20 @@
                                 <span>www.s2pc.mg</span>
                                 <br/>
                                 <!-- -->
-                                <span>STAT:</span>
-                                <t t-if="o.company_id.partner_id.STAT">
-                                    <span t-esc="o.company_id.partner_id.STAT"/>
-                                </t>
-                                <t t-else="">
-                                    <span>20221 31 1992 0 00021</span>
-                                </t>
-                                <br/>
                                 <span>NIF:</span>
                                 <t t-if="o.company_id.partner_id.vat">
                                     <span t-esc="o.company_id.partner_id.vat"/>
                                 </t>
                                 <t t-else="">
                                     <span>1000150227 du 01/04/2003</span>
+                                </t>
+                                <br/>
+                                <span>STAT:</span>
+                                <t t-if="o.company_id.partner_id.STAT">
+                                    <span t-esc="o.company_id.partner_id.STAT"/>
+                                </t>
+                                <t t-else="">
+                                    <span>20221 31 1992 0 00021</span>
                                 </t>
                                 <br/>
                                 <span>CIF: 0112597/DGI-J du 09/06/2022</span>
@@ -135,7 +137,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div t-if="o.partner_id.vat" class="row">
                                     <div class="col-3">
                                         <span>NIF:</span>
                                     </div>
@@ -143,7 +145,7 @@
                                         <span t-field="o.partner_id.vat"/>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div t-if="o.partner_id.STAT" class="row">
                                     <div class="col-3">
                                         <span>STAT:</span>
                                     </div>
@@ -151,7 +153,7 @@
                                         <span t-field="o.partner_id.STAT"/>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div t-if="o.partner_id.CIF" class="row">
                                     <div class="col-3">
                                         <span>CIF:</span>
                                     </div>
