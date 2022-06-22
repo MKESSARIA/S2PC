@@ -58,7 +58,7 @@
         <record id="stock.menu_action_inventory_tree" model="ir.ui.menu">
             <field name="action" ref="stock.action_view_inventory_tree"/>
             <field name="active" eval="True"/>
-            <field name="groups_id" eval="[(6, 0, [ref('stock.group_stock_manager')])]"/>
+            <field name="groups_id" eval="[(6, 0, [ref('stock.group_stock_manager'), ref('s2pc_securite.group_menu_stock_adjustement_accessr')])]"/>
             <field name="name">Ajustements de stock</field>
             <field name="parent_id" ref="stock.menu_stock_warehouse_mgmt"/>
             <field name="sequence">30</field>
