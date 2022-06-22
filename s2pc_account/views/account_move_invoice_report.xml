@@ -41,7 +41,8 @@
                                 <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">NOTE D'ACHAT</span>
                                 <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">NOTE D'ACHAT EN
                                     BROUILLON</span>
-                                <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'">NOTE D'ACHAT ANNULÉE</span>
+                                <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'">NOTE D'ACHAT
+                                    ANNULÉE</span>
                                 <span t-if="o.move_type == 'out_refund'">NOTE D'ACHAT D'AVOIR</span>
                                 <span t-if="o.move_type == 'in_refund'">NOTE DE CREDIT DU VENDEUR</span>
                                 <span t-if="o.move_type == 'in_invoice'">NOTE D'ACHAT (MODULE ACHAT)</span>
@@ -74,7 +75,10 @@
                             </t>
                             <t t-else="">
                                 <span>+261 32 05 707 91 / +261 32 07 184 88</span>
+
                             </t>
+                            <br/>
+                                <span>Tel: +261 34 54 723 82 / +261 34 94 455 63</span>
                             <br/>
                             <span>Mail:</span>
                             <t t-if="o.company_id.email">
@@ -90,7 +94,7 @@
                             <span>Bâtiment PRICE PLAZA 2, Andraharo</span>
                             <br/>
                             <span>Tel:</span>
-                            <span>+261 32 05 707 97</span>
+                            <span>+261 32 05 707 97 / +261 38 61 846 16</span>
                             <br/>
                             <span>Mail:</span>
                             <span>commercial.tana@s2pc.mg</span>
@@ -387,7 +391,8 @@
                                 <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">NOTE D'ACHAT</span>
                                 <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">NOTE D'ACHAT EN
                                     BROUILLON</span>
-                                <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'">NOTE D'ACHAT ANNULÉE</span>
+                                <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'">NOTE D'ACHAT
+                                    ANNULÉE</span>
                                 <span t-if="o.move_type == 'out_refund'">NOTE D'ACHAT D'AVOIR</span>
                                 <span t-if="o.move_type == 'in_refund'">NOTE DE CREDIT DU VENDEUR</span>
                                 <span t-if="o.move_type == 'in_invoice'">NOTE D'ACHAT (MODULE ACHAT)</span>
@@ -421,6 +426,8 @@
                                 <span>+261 32 05 707 91 / +261 32 07 184 88</span>
                             </t>
                             <br/>
+                                <span>Tel: +261 34 54 723 82 / +261 34 94 455 63</span>
+                            <br/>
                             <span>Mail:</span>
                             <t t-if="o.company_id.email">
                                 <span t-esc="o.company_id.email"/>
@@ -435,7 +442,7 @@
                             <span>Bâtiment PRICE PLAZA 2, Andraharo</span>
                             <br/>
                             <span>Tel:</span>
-                            <span>+261 32 05 707 97</span>
+                            <span>+261 32 05 707 97 / +261 38 61 846 16</span>
                             <br/>
                             <span>Mail:</span>
                             <span>commercial.tana@s2pc.mg</span>
