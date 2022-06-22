@@ -48,6 +48,8 @@
                                 <span>+261 32 05 707 91 / +261 32 07 184 88</span>
                             </t>
                             <br/>
+                                <span>Tel: +261 34 54 723 82 / +261 34 94 455 63</span>
+                            <br/>
                             <span>Mail:</span>
                             <t t-if="o.company_id.email">
                                 <span t-esc="o.company_id.email"/>
@@ -62,7 +64,7 @@
                             <span>Bâtiment PRICE PLAZA 2, Andraharo</span>
                             <br/>
                             <span>Tel:</span>
-                            <span>+261 32 05 707 97</span>
+                            <span>+261 32 05 707 97 / +261 38 61 846 16</span>
                             <br/>
                             <span>Mail:</span>
                             <span>commercial.tana@s2pc.mg</span>
@@ -127,20 +129,32 @@
                                                     </td>
                                                 </tr>
                                             </t>
-                                            <tr>
-                                                <td>
-                                                    <span>NIF:</span>
-                                                    <span t-esc="o.partner_id.vat"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <span>STAT:</span>
-                                                    <span t-esc="o.partner_id.STAT"/>
-                                                </td>
-                                            </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                            </div>
+                            <div t-if="o.partner_id.vat" class="row">
+                                <div class="col-3">
+                                    <span>NIF:</span>
+                                </div>
+                                <div class="col-6">
+                                    <span t-field="o.partner_id.vat"/>
+                                </div>
+                            </div>
+                            <div t-if="o.partner_id.STAT" class="row">
+                                <div class="col-3">
+                                    <span>STAT:</span>
+                                </div>
+                                <div class="col-6">
+                                    <span t-field="o.partner_id.STAT"/>
+                                </div>
+                            </div>
+                            <div t-if="o.partner_id.CIF" class="row">
+                                <div class="col-3">
+                                    <span>CIF:</span>
+                                </div>
+                                <div class="col-6">
+                                    <span t-field="o.partner_id.CIF"/>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +202,8 @@
                                     <td t-esc="o.invoice_line_ids[r].product_id.default_code or ''"></td>
                                     <td t-esc="o.invoice_line_ids[r].product_id.display_name"></td>
                                     <t t-if="o.get_lot_number(o.invoice_line_ids[r].move_id.invoice_origin, o.invoice_line_ids[r].product_id)">
-                                        <t t-set="bl_id" t-value="o.get_lot_number(o.invoice_line_ids[r].move_id.invoice_origin, o.invoice_line_ids[r].product_id)" />
+                                        <t t-set="bl_id"
+                                           t-value="o.get_lot_number(o.invoice_line_ids[r].move_id.invoice_origin, o.invoice_line_ids[r].product_id)"/>
                                         <td t-esc="bl_id"/>
                                     </t>
                                     <t t-else="">
