@@ -110,7 +110,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-3">
-                                        <span>Client:</span>
+                                        <span>Fournisseur:</span>
                                     </div>
                                     <div class="col-6">
                                         <span t-field="o.partner_id"/>
