@@ -21,7 +21,8 @@
     'depends': ['s2pc_base',
                 's2pc_contact',
                 's2pc_product',
-                'account'],
+                'account',
+                'stock_picking_invoice_link'],
 
     # always loaded
     'data': [

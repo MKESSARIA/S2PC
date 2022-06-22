@@ -190,7 +190,7 @@
                                         <tr>
                                             <th>Mode de règlement</th>
                                             <th>Echéance</th>
-                                            <th>V/Id CEE</th>
+
 
                                         </tr>
 
@@ -204,12 +204,22 @@
                                                     <span>Aucun</span>
                                                 </t></td>
                                             <td t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"></td>
-                                            <td></td>
+
                                         </tr>
 
                                     </tbody>
 
                                 </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <span>Réf BL:</span>
+                                </div>
+                                <div class="col-6">
+                                    <t t-foreach="o.picking_ids" t-as="picking">
+                                        <span t-esc="picking.name"/> ,
+                                    </t>
+                                </div>
                             </div>
 
 
@@ -542,8 +552,6 @@
                                         <tr>
                                             <th>Mode de règlement</th>
                                             <th>Echéance</th>
-                                            <th>V/Id CEE</th>
-
                                         </tr>
 
                                     </thead>
@@ -556,12 +564,22 @@
                                                     <span>Aucun</span>
                                                 </t></td>
                                             <td t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"></td>
-                                            <td></td>
+
                                         </tr>
 
                                     </tbody>
 
                                 </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <span>Réf BL:</span>
+                                </div>
+                                <div class="col-6">
+                                    <t t-foreach="o.picking_ids" t-as="picking">
+                                        <span t-esc="picking.name"/> ,
+                                    </t>
+                                </div>
                             </div>
                         </div>
 
