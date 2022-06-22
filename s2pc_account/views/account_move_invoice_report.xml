@@ -78,7 +78,7 @@
 
                             </t>
                             <br/>
-                                <span>Tel: +261 34 54 723 82 / +261 34 94 455 63</span>
+                            <span>Tel: +261 34 54 723 82 / +261 34 94 455 63</span>
                             <br/>
                             <span>Mail:</span>
                             <t t-if="o.company_id.email">
@@ -197,8 +197,13 @@
                                     </thead>
                                     <tbody class="invoice-body">
                                         <tr>
-                                            <td t-esc="o.payment_reference"></td>
-                                            <td t-esc="o.invoice_date_due"></td>
+                                            <td><t t-if="o.reglement_mode">
+                                                <t t-esc="dict (o.fields_get (allfields = ['reglement_mode']) ['reglement_mode'] ['selection']) [o.reglement_mode]"/>
+                                            </t>
+                                                <t t-else="">
+                                                    <span>Aucun</span>
+                                                </t></td>
+                                            <td t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"></td>
                                             <td></td>
                                         </tr>
 
@@ -426,7 +431,7 @@
                                 <span>+261 32 05 707 91 / +261 32 07 184 88</span>
                             </t>
                             <br/>
-                                <span>Tel: +261 34 54 723 82 / +261 34 94 455 63</span>
+                            <span>Tel: +261 34 54 723 82 / +261 34 94 455 63</span>
                             <br/>
                             <span>Mail:</span>
                             <t t-if="o.company_id.email">
@@ -544,8 +549,13 @@
                                     </thead>
                                     <tbody class="invoice-body">
                                         <tr>
-                                            <td t-esc="o.payment_reference"></td>
-                                            <td t-esc="o.invoice_date_due"></td>
+                                            <td><t t-if="o.reglement_mode">
+                                                <t t-esc="dict (o.fields_get (allfields = ['reglement_mode']) ['reglement_mode'] ['selection']) [o.reglement_mode]"/>
+                                            </t>
+                                                <t t-else="">
+                                                    <span>Aucun</span>
+                                                </t></td>
+                                            <td t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"></td>
                                             <td></td>
                                         </tr>
 
