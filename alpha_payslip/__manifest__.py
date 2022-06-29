@@ -37,7 +37,7 @@
     "license": "LGPL-3",
     "assets": {
         "web.report_assets_common": [
-            "alpha_payslip/static/src/css/account_move_invoice_report",
+            "alpha_payslip/static/src/css/payslip_report_css.css",
         ],
     },
 }

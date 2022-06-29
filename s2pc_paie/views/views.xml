@@ -1,7 +1,7 @@
 <odoo>
     <data>
         <template id="report_payslip_inherit" inherit_id="hr_payroll.report_payslip">
-            <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+            <!--<xpath expr="//t[@t-call='web.external_layout']" position="replace">
                 <t t-call="s2pc_base.external_layout">
                     <div class="page">
                         <div class="row">
@@ -60,7 +60,7 @@
 
                             </div>
                         </div>
-                        <!--<h2 t-field="o.name"/>-->
+                        &lt;!&ndash;<h2 t-field="o.name"/>&ndash;&gt;
                         <t t-set="is_invalid" t-value="o._is_invalid()"/>
                         <br/>
                         <t t-if="is_invalid">
@@ -139,8 +139,8 @@
 
                         </table>
 
-                        <!-- YTI TODO master: Remove this horrible bidouille and add a field on the structure to display the basic
-                             salary on the payslip report -->
+                        &lt;!&ndash; YTI TODO master: Remove this horrible bidouille and add a field on the structure to display the basic
+                             salary on the payslip report &ndash;&gt;
                         <t t-set="holiday_attest_n1"
                            t-value="o.env.ref('l10n_be_hr_payroll.hr_payroll_structure_cp200_employee_departure_n1_holidays', raise_if_not_found=False)"/>
                         <t t-set="holiday_attest_n"
@@ -152,8 +152,8 @@
                                     <span t-esc="o.contract_id.base_salary"
                                           t-options="{'widget': 'monetary', 'display_currency': o.company_id.currency_id}"/>
                                 </th>
-                                <!--<th class="w-25"></th>
-                                <th class="w-25"></th>-->
+                                &lt;!&ndash;<th class="w-25"></th>
+                                <th class="w-25"></th>&ndash;&gt;
                             </thead>
                         </table>
                         <table class="invoice-table">
@@ -193,10 +193,10 @@
                                           t-as="line">
                                         <t t-set="line_style"/>
                                         <t t-set="line_class"/>
-                                        <!--<t t-if="line.code == 'NET'">
+                                        &lt;!&ndash;<t t-if="line.code == 'NET'">
                                             <t t-set="line_style" t-value="'color:#000000;'"/>
                                             <t t-set="line_class" t-value="'o_total o_border_bottom font-weight-bold'"/>
-                                        </t>-->
+                                        </t>&ndash;&gt;
                                         <t t-if="(line.code == 'BASIC') or (line.code == 'GROSS')">
                                             <t t-set="line_style" t-value="'color:#000000;'"/>
                                             <t t-set="line_class" t-value="'o_subtotal o_border_bottom'"/>
@@ -219,7 +219,7 @@
                             établie par la suite.</p>
                     </div>
                 </t>
-            </xpath>
+            </xpath>-->
         </template>
     </data>
 </odoo>

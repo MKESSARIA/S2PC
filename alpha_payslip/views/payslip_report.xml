@@ -12,12 +12,11 @@
                         .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
                         sans-serif;font-size:11px;
                         font-weight:normal;overflow:hidden;padding:2px 2px;word-break:normal;}
-                        .tg .tg-34fe{background-color:#c0c0c0;border-color:inherit;text-align:center;vertical-align:top}
-                        .tg
-                        .tg-zlqz{background-color:#c0c0c0;border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
-                        .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+                        .tg .tg-34fe{background-color:#c0c0c0;border-color:inherit;text-align:center}
+                        .tg .tg-zlqz{background-color:#c0c0c0;border-color:inherit;font-weight:bold;text-align:center}
+                        .tg .tg-0pky{border-color:inherit;text-align:left}
                     </style>
-                    <table class="tg" style="undefined;table-layout: fixed; width: 100%">
+                    <table class="tg" style="undefined;table-layout: fixed; width: 100%;">
                         <colgroup>
                             <col style="width: 12.5%"/>
                             <col style="width: 12.5%"/>
@@ -76,7 +75,7 @@
                                         </div>
                                         <div class="col-6">
                                             <img t-att-src="image_data_uri(o.company_id.logo)" align="left"
-                                                 style="max-height: 150px; float:right; max-width: 200px;"/>
+                                                 style="max-height: 100px; float:right; max-width: 200px;"/>
                                         </div>
                                     </div>
 
@@ -101,9 +100,17 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="tg-0pky" colspan="2" rowspan="4">Du <span
-                                        t-esc="o.date_from.strftime('%d/%m/%Y')"/> à <span
-                                        t-esc="o.date_to.strftime('%d/%m/%Y')"/></td>
+                                <td class="tg-0pky" colspan="2" rowspan="4">
+                                    <t t-if="o.date_from and o.date_to">
+                                        Du <span
+                                            t-esc="o.date_from.strftime('%d/%m/%Y')"/> à <span
+                                            t-esc="o.date_to.strftime('%d/%m/%Y')"/>
+                                    </t>
+                                    <t t-else="">
+
+                                    </t>
+
+                                </td>
                                 <td class="tg-0pky" colspan="2" rowspan="2">
                                     <span t-esc="o.contract_id.contract_type_id.name"/>
                                     <span t-esc="o.contract_id.contrat_categorie"/>
@@ -148,8 +155,14 @@
                             </tr>
                             <tr>
                                 <td class="tg-0pky" colspan="2" style="text-align:center;">
-                                    <span style="font-weight:400;font-style:normal"><span
-                                            t-esc="o.paid_date.strftime('%d/%m/%Y')"/></span>
+                                    <t t-if="o.paid_date">
+                                        <span style="font-weight:400;font-style:normal"><span
+                                                t-esc="o.paid_date.strftime('%d/%m/%Y')"/></span>
+                                    </t>
+                                    <t t-else="">
+
+                                    </t>
+
                                 </td>
                             </tr>
                             <tr>
@@ -209,7 +222,13 @@
                                 </td>
                                 <td class="tg-0pky"><span t-esc="o.employee_id.matricule"/></td>
                                 <td class="tg-0pky">
-                                    <span t-esc="o.contract_id.date_start.strftime('%d/%m/%Y')"/>
+                                    <t t-if="o.contract_id.date_start">
+                                        <span t-esc="o.contract_id.date_start.strftime('%d/%m/%Y')"/>
+                                    </t>
+                                    <t t-else="">
+
+                                    </t>
+
                                 </td>
                                 <td class="tg-0pky">
                                     <span t-esc="o.contract_id.date_end"/>
@@ -224,7 +243,13 @@
                                     <span t-esc="o.get_age(o.employee_id.birthday,0)"/> <span>ans</span>
                                 </td>
                                 <td class="tg-0pky">
-                                    <span t-esc="o.employee_id.birthday.strftime('%d/%m/%Y')"/>
+                                    <t t-if="o.employee_id.birthday">
+                                        <span t-esc="o.employee_id.birthday.strftime('%d/%m/%Y')"/>
+                                    </t>
+                                    <t t-else="">
+
+                                    </t>
+
                                 </td>
                             </tr>
                             <tr>
@@ -285,40 +310,29 @@
 
                             <span t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)"
                                   t-as="line">
-                                <t t-set="line_style"/>
-                                <t t-set="line_class"/>
-                                <!--<t t-if="line.code == 'NET'">
-                                    <t t-set="line_style" t-value="'color:#000000;'"/>
-                                    <t t-set="line_class" t-value="'o_total o_border_bottom font-weight-bold'"/>
-                                </t>-->
-                                <t t-if="(line.code == 'BASIC') or (line.code == 'GROSS')">
-                                    <t t-set="line_style" t-value="'color:#000000;'"/>
-                                    <t t-set="line_class" t-value="'o_subtotal o_border_bottom'"/>
-                                </t>
+
                                 <t t-if="(line.salary_rule_id.is_total == false)">
-                                    <tr t-att-class="line_class" t-att-style="line_style">
-                                        <td class="tg-0lax" colspan="2"><span t-field="line.name"/></td>
-                                        <td class="tg-0lax" colspan="2"><span
+                                    <tr>
+                                        <td colspan="2"><span t-field="line.name"/></td>
+                                        <td colspan="2"><span
                                                 t-esc="'{0:,.2f}'.format(float(line.total)).replace(',', ' ')"/></td>
-                                        <td class="tg-0lax" colspan="2"><span
+                                        <td colspan="2"><span
                                                 t-esc="'{0:,.2f}'.format(float(line.base)).replace(',', ' ')"/></td>
-                                        <td class="tg-0lax" colspan="2"><span
-                                                t-esc="'{0:,.2f}'.format(float(line.total)).replace(',', ' ')"
-                                                t-att-style="'color:#000000;' if line.total &lt; 0 else ''"/>
+                                        <td colspan="2"><span
+                                                t-esc="'{0:,.2f}'.format(float(line.total)).replace(',', ' ')"/>
                                             <span t-esc="o.company_id.currency_id.symbol"/>
                                         </td>
                                     </tr>
                                 </t>
                                 <t t-else="">
-                                    <tr t-att-class="line_class" t-att-style="line_style">
-                                        <td class="tg-0lax" colspan="4"
+                                    <tr>
+                                        <td colspan="4"
                                             style="background-color:#eeece1; text-align:center; font-weight:bold;"><span
                                                 t-field="line.name"/></td>
-                                        <td class="tg-0lax" colspan="4"
+                                        <td colspan="4"
                                             style="background-color:#eeece1; text-align:center; font-weight:bold;">
                                             <span
-                                                    t-esc="'{0:,.2f}'.format(int(line.total)).replace(',', ' ')"
-                                                    t-att-style="'color:#000000;' if line.total &lt; 0 else ''"/>
+                                                    t-esc="'{0:,.2f}'.format(int(line.total)).replace(',', ' ')"/>
                                             <span t-esc="o.company_id.currency_id.symbol"/>
                                         </td>
                                     </tr>
