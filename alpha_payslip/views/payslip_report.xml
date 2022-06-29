@@ -5,18 +5,19 @@
                 <t t-call="alpha_payslip.external_layout">
 
                     <style type="text/css">
-                        .tg {border-collapse:collapse;border-spacing:0;}
-                        .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
+                        .tgv {border-collapse:collapse;border-spacing:0;}
+                        .tgv td{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
                         sans-serif;font-size:11px;
-                        overflow:hidden;padding:2px 2px;word-break:normal;}
-                        .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
+                        overflow:hidden;word-break:normal;padding-top: 2px; padding-bottom: 2px; padding-left: 5px;}
+                        .tgv th{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
                         sans-serif;font-size:11px;
-                        font-weight:normal;overflow:hidden;padding:2px 2px;word-break:normal;}
-                        .tg .tg-34fe{background-color:#c0c0c0;border-color:inherit;text-align:center}
-                        .tg .tg-zlqz{background-color:#c0c0c0;border-color:inherit;font-weight:bold;text-align:center}
-                        .tg .tg-0pky{border-color:inherit;text-align:left}
+                        font-weight:normal;overflow:hidden;padding:2px 2px;word-break:normal}
+                        .tgv .tgv-34fe{background-color:#c0c0c0;border-color:inherit;text-align:center;}
+                        .tgv
+                        .tgv-zlqz{background-color:#c0c0c0;border-color:inherit;font-weight:bold;text-align:center;}
+                        .tgv .tgv-0pky{border-color:inherit;text-align:left;}
                     </style>
-                    <table class="tg" style="undefined;table-layout: fixed; width: 100%;">
+                    <table class="tgv" style="table-layout: fixed; width: 100%;">
                         <colgroup>
                             <col style="width: 12.5%"/>
                             <col style="width: 12.5%"/>
@@ -29,12 +30,12 @@
                         </colgroup>
                         <tbody>
                             <tr>
-                                <td class="tg-0pky" colspan="2"
+                                <td class="tgv-0pky" colspan="2"
                                     style="text-align:center; vertical-align:middle;font-weight:bold; font-size:21px;">
                                     BULLETIN DE PAIE
 
                                 </td>
-                                <td class="tg-0pky" colspan="6">
+                                <td class="tgv-0pky" colspan="6">
                                     <div class="row">
                                         <div class="col-6">
                                             <span t-esc="o.company_id.name"/>
@@ -81,26 +82,26 @@
 
                                 </td>
                             </tr>
-                            <tr style="padding: 0px;">
-                                <td class="tg-zlqz" colspan="2">PERIODE DE PAIE</td>
-                                <td class="tg-34fe" colspan="2">
+                            <tr>
+                                <td class="tgv-zlqz" colspan="2">PERIODE DE PAIE</td>
+                                <td class="tgv-34fe" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         QUALIFICATION PROFESSIONNELLE
                                     </span>
                                 </td>
-                                <td class="tg-34fe" colspan="2">
+                                <td class="tgv-34fe" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         NUMERO
                                         CNAPS
                                     </span>
                                 </td>
-                                <td class="tg-34fe" colspan="2">
+                                <td class="tgv-34fe" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">CODE
                                         ADH OSTIE</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="tg-0pky" colspan="2" rowspan="4">
+                                <td class="tgv-0pky" colspan="2" rowspan="4">
                                     <t t-if="o.date_from and o.date_to">
                                         Du <span
                                             t-esc="o.date_from.strftime('%d/%m/%Y')"/> à <span
@@ -111,26 +112,26 @@
                                     </t>
 
                                 </td>
-                                <td class="tg-0pky" colspan="2" rowspan="2">
+                                <td class="tgv-0pky" colspan="2" rowspan="2">
                                     <span t-esc="o.contract_id.contract_type_id.name"/>
                                     <span t-esc="o.contract_id.contrat_categorie"/>
                                 </td>
-                                <td class="tg-0pky" colspan="2" rowspan="2">
+                                <td class="tgv-0pky" colspan="2" rowspan="2">
                                     <span t-esc="o.employee_id.cnaps"/>
                                 </td>
-                                <td class="tg-0pky" colspan="2" rowspan="2">
+                                <td class="tgv-0pky" colspan="2" rowspan="2">
                                     <span t-esc="o.employee_id.ostie"/>
                                 </td>
                             </tr>
                             <tr></tr>
                             <tr>
-                                <td class="tg-34fe" colspan="6">
+                                <td class="tgv-34fe" colspan="6">
                                     <span style="font-weight:bold;font-style:normal">
                                         EMPLOYE(E)</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="tg-0pky" colspan="6" rowspan="3">
+                                <td class="tgv-0pky" colspan="6" rowspan="3">
                                     <span>Nom et prénom: </span> <span t-esc="o.employee_id.name"/> <br/>
                                     <span>Adresse: </span> <span t-esc="o.employee_id.address_home_id.street"/> <br/>
                                     <span>N°CIN: </span> <span t-esc="o.employee_id.identification_id"/> <br/>
@@ -149,12 +150,12 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="tg-34fe" colspan="2">
+                                <td class="tgv-34fe" colspan="2">
                                     <span style="font-weight:bold">DATE DE PAIE</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="tg-0pky" colspan="2" style="text-align:center;">
+                                <td class="tgv-0pky" colspan="2" style="text-align:center;">
                                     <t t-if="o.paid_date">
                                         <span style="font-weight:400;font-style:normal"><span
                                                 t-esc="o.paid_date.strftime('%d/%m/%Y')"/></span>
@@ -166,37 +167,37 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="tg-34fe" colspan="2">
+                                <td class="tgv-34fe" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">CONGES
                                         PAYES</span>
                                 </td>
-                                <td class="tg-34fe">
+                                <td class="tgv-34fe">
                                     <span style="font-weight:bold;font-style:normal">
                                         Matricule</span>
                                 </td>
-                                <td class="tg-34fe">
+                                <td class="tgv-34fe">
                                     <span style="font-weight:bold;font-style:normal">Date
                                         d'entrée</span>
                                 </td>
-                                <td class="tg-34fe">
+                                <td class="tgv-34fe">
                                     <span style="font-weight:bold;font-style:normal">Date de
                                         sortie</span>
                                 </td>
-                                <td class="tg-34fe">
+                                <td class="tgv-34fe">
                                     <span style="font-weight:bold;font-style:normal">
                                         Ancienneté</span>
                                 </td>
-                                <td class="tg-34fe">
+                                <td class="tgv-34fe">
                                     <span style="font-weight:bold;font-style:normal">Age</span>
                                 </td>
-                                <td class="tg-34fe">
+                                <td class="tgv-34fe">
                                     <span style="font-weight:700;font-style:normal">Date de
                                         Naissance</span>
                                 </td>
                             </tr>
                             <tr>
 
-                                <td class="tg-0pky" colspan="2" rowspan="4">
+                                <td class="tgv-0pky" colspan="2" rowspan="4">
                                     <div class="row">
                                         <div class="col-6">Periode</div>
                                         <div class="col-6">: <span t-esc="o.employee_id.allocation_display"/>
@@ -220,8 +221,8 @@
                                     </div>
 
                                 </td>
-                                <td class="tg-0pky"><span t-esc="o.employee_id.matricule"/></td>
-                                <td class="tg-0pky">
+                                <td class="tgv-0pky"><span t-esc="o.employee_id.matricule"/></td>
+                                <td class="tgv-0pky">
                                     <t t-if="o.contract_id.date_start">
                                         <span t-esc="o.contract_id.date_start.strftime('%d/%m/%Y')"/>
                                     </t>
@@ -230,19 +231,19 @@
                                     </t>
 
                                 </td>
-                                <td class="tg-0pky">
+                                <td class="tgv-0pky">
                                     <span t-esc="o.contract_id.date_end"/>
                                 </td>
                                 <!-- TODO: get_length_of_service -->
-                                <td class="tg-0pky">
+                                <td class="tgv-0pky">
                                     <span t-esc="o.get_age(o.contract_id.date_start,o.contract_id.date_end)"/> <span>
                                     ans</span>
                                 </td>
                                 <!-- TODO: get_age -->
-                                <td class="tg-0pky">
+                                <td class="tgv-0pky">
                                     <span t-esc="o.get_age(o.employee_id.birthday,0)"/> <span>ans</span>
                                 </td>
-                                <td class="tg-0pky">
+                                <td class="tgv-0pky">
                                     <t t-if="o.employee_id.birthday">
                                         <span t-esc="o.employee_id.birthday.strftime('%d/%m/%Y')"/>
                                     </t>
@@ -253,7 +254,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="tg-0pky" colspan="6" rowspan="3">
+                                <td class="tgv-0pky" colspan="6" rowspan="3">
                                     <!-- TODO: set div side by side -->
                                     <div style="width:100%; overflow: hidden;">
                                         <div style="float: left;">
@@ -287,22 +288,22 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr>
-                                <td class="tg-34fe" colspan="2">
+                            <tr style="padding-top: 2px; padding-bottom: 2px;"></tr>
+                            <tr style="padding-top: 2px; padding-bottom: 2px;"></tr>
+                            <tr style="padding-top: 2px; padding-bottom: 2px;">
+                                <td class="tgv-zlqz" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         RUBRIQUES</span>
                                 </td>
-                                <td class="tg-34fe" colspan="2">
+                                <td class="tgv-zlqz" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         NOMBRE</span>
                                 </td>
-                                <td class="tg-34fe" colspan="2">
+                                <td class="tgv-zlqz" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         BASE</span>
                                 </td>
-                                <td class="tg-34fe" colspan="2">
+                                <td class="tgv-zlqz" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         MONTANT</span>
                                 </td>
