@@ -2,18 +2,21 @@
     <data>
         <template id="report_payslip_inherit" inherit_id="hr_payroll.report_payslip">
             <xpath expr="//t[@t-call='web.external_layout']" position="replace">
-                <t t-call="alpha_payslip.external_layout">
+                <t t-call='alpha_payslip.external_layout_alpha'>
+                    <meta charset="UTF-8"/>
 
-                    <style type="text/css">
-                        td {padding:2px 2px;}
-                        th {padding:2px 2px;}
+                    <style>
+
+                        td, table, th {padding: 2px 2px!important;}
+
+
                         .tgv {border-collapse:collapse;border-spacing:0;}
                         .tgv td{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
                         sans-serif;font-size:11px;
-                        overflow:hidden;word-break:normal;padding-top:2px;padding-bottom:0;padding-left:5px;}
+                        overflow:hidden;word-break:normal;padding:2px 2px;}
                         .tgv th{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
                         sans-serif;font-size:11px;
-                        font-weight:normal;overflow:hidden;word-break:normal;padding-top:2px;padding-bottom:0;padding-left:5px;}
+                        font-weight:normal;overflow:hidden;word-break:normal;padding:2px 2px;}
                         .tgv .tgv-34fe{background-color:#c0c0c0;border-color:inherit;text-align:center;}
                         .tgv
                         .tgv-zlqz{background-color:#c0c0c0;border-color:inherit;font-weight:bold;text-align:center;}
@@ -37,9 +40,11 @@
                                     BULLETIN DE PAIE
 
                                 </td>
-                                <td class="tgv-0pky" colspan="6">
-                                    <div class="row">
-                                        <div class="col-6">
+                                <td colspan="6">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td>
+                                                <div class="div1">
                                             <span t-esc="o.company_id.name"/>
                                             <!--<br/>
                                             <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>-->
@@ -76,11 +81,17 @@
                                                 <span t-esc="o.company_id.stat"/>
                                             </t>
                                         </div>
-                                        <div class="col-6">
+                                            </td>
+                                            <td >
+                                                <div class="div2">
                                             <img t-att-src="image_data_uri(o.company_id.logo)" align="left"
                                                  style="max-height: 100px; float:right; max-width: 200px;"/>
                                         </div>
-                                    </div>
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
 
                                 </td>
                             </tr>
@@ -200,26 +211,25 @@
                             <tr>
 
                                 <td class="tgv-0pky" colspan="2" rowspan="4">
-                                    <div class="row">
-                                        <div class="col-6">Periode</div>
-                                        <div class="col-6">: <span t-esc="o.employee_id.allocation_display"/>
+                                    <div>
+                                        <div>Periode : <span t-esc="o.employee_id.allocation_display"/>
                                             Jours</div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6">Acquis</div>
-                                        <div class="col-6">: 2.5 Jours</div>
+                                    <div>
+                                        <div class="col-6">Acquis <span class="col-6">: 2.5 Jours</span></div>
+
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6">Pris</div>
-                                        <div class="col-6">: <span t-esc="o.employee_id.allocation_used_display"/>
+                                    <div>
+                                        <div>Pris: <span t-esc="o.employee_id.allocation_used_display"/>
                                             Jours</div>
+
                                     </div>
-                                    <div class="row">
-                                        <div class="col-6">Restant</div>
-                                        <div class="col-6">: <t t-set="foo"
-                                                                t-value="float(o.employee_id.allocation_display) - float(o.employee_id.allocation_used_display)"/>
+                                    <div>
+                                        <div class="col-6">Restant : <t t-set="foo"
+                                                                        t-value="float(o.employee_id.allocation_display) - float(o.employee_id.allocation_used_display)"/>
                                             <t t-out="foo"/> Jours
                                         </div>
+
                                     </div>
 
                                 </td>
@@ -293,19 +303,19 @@
                             <tr style="padding-top: 2px; padding-bottom: 2px;"></tr>
                             <tr style="padding-top: 2px; padding-bottom: 2px;"></tr>
                             <tr style="padding-top: 2px; padding-bottom: 2px;">
-                                <td class="tgv-zlqz" colspan="2">
+                                <td id="tdval" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         RUBRIQUES</span>
                                 </td>
-                                <td class="tgv-zlqz" colspan="2">
+                                <td id="tdval" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         NOMBRE</span>
                                 </td>
-                                <td class="tgv-zlqz" colspan="2">
+                                <td id="tdval" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         BASE</span>
                                 </td>
-                                <td class="tgv-zlqz" colspan="2">
+                                <td id="tdval" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">
                                         MONTANT</span>
                                 </td>
@@ -367,6 +377,7 @@
                     </div>
 
                 </t>
+
             </xpath>
         </template>
     </data>
