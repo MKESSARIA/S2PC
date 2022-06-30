@@ -24,7 +24,7 @@ class AccountMove(models.Model):
             ("tana", "Tananarive"),
             ("tamatave", "Tamatave"),
         ],
-        string="La ville où  a été fait la facture",
+        string="Ville de facturation",
         help="Pour mieux faire les recherches il faut  completér ce champs Ville.",
     )
 
