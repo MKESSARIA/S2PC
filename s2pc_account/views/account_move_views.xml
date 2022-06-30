@@ -30,5 +30,15 @@
                 </field>
             </field>
         </record>
+        <record id="s2pc_account_move_search_view_inherit" model="ir.ui.view">
+            <field name="name">s2pc.account.move.view.seach.inherit</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter" />
+            <field name="arch" type="xml">
+                <xpath expr="//search/group/filter[@name='status']" position="after">
+                    <filter string="Ville" name="ville" context="{'group_by': 'ville'}" />
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>
