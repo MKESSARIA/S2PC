@@ -16,8 +16,9 @@ class AccountMove(models.Model):
             ("esp", "ESP"),
             ("chk", "CHQ"),
         ],
-        default="esp",
     )
+
+    reglement_mode_tamatave = fields.Char(string="Banque Tamatave", default="BMOI 6684646848446468484")
 
     ville = fields.Selection(
         [
