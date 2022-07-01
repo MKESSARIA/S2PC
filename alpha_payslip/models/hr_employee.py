@@ -23,4 +23,8 @@ class HrEmployeePublic(models.Model):
     ostie = fields.Char(readonly=True)
     cin = fields.Char(readonly=True)
     matricule = fields.Char(readonly=True)
-    classification = fields.Selection(readonly=True)
+    classification = fields.Selection([
+        ('hc', 'HC'),
+        ('op', 'OP'),
+        ('etc', 'Etc'),
+    ], string='Classification', readonly=True)
