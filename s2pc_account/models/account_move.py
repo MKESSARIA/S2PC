@@ -26,7 +26,20 @@ class AccountMove(models.Model):
         ],
         string="La ville de facturation",
         help="Pour mieux faire les recherches il faut  completér ce champs Ville.",
+        # readonly=False,
+        # compute="_compute_ville"
     )
+
+    # def _compute_ville(self):
+    #     for record in self:
+    #         if self.env.user.has_group('s2pc_securite.group_s2pc_antananarivo') and self.env.user.has_group('s2pc_securite.group_s2pc_tamatave'):
+    #             record.ville = None
+    #         elif self.env.user.has_group('s2pc_securite.group_s2pc_antananarivo'):
+    #             record.ville = "tana"
+    #         elif self.env.user.has_group('s2pc_securite.group_s2pc_tamatave'):
+    #             record.ville = "tamatave"
+    #         else:
+    #             record.ville = None
 
     def _compute_advised_pricelist(self):
         for rec in self:
@@ -63,9 +76,9 @@ class AccountMoveLine(models.Model):
         for rec in self:
             if rec.price_unit and rec.advised_price_unit:
                 rec.advised_ratio = (
-                    (rec.advised_price_unit - rec.price_unit)
-                    * 100
-                    / rec.advised_price_unit
+                        (rec.advised_price_unit - rec.price_unit)
+                        * 100
+                        / rec.advised_price_unit
                 )
             else:
                 rec.advised_ratio = 0

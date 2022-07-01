@@ -18,6 +18,7 @@
         "s2pc_product",
         "account",
         "stock_picking_invoice_link",
+        "s2pc_securite"
     ],
     # always loaded
     "data": [
