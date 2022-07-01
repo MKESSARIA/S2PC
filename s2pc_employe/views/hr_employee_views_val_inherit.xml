@@ -6,9 +6,6 @@
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
-                <field name="children" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </field>
                 <!--<field name="work_location_id" position="after">
                     <field name="cnaps_number"/>
                 </field>-->
