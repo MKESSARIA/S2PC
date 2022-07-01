@@ -197,12 +197,30 @@
                                     </thead>
                                     <tbody class="invoice-body">
                                         <tr>
-                                            <td><t t-if="o.reglement_mode">
-                                                <t t-esc="dict (o.fields_get (allfields = ['reglement_mode']) ['reglement_mode'] ['selection']) [o.reglement_mode]"/>
-                                            </t>
+                                            <td>
+                                                <t t-if="o.ville == 'tana'">
+                                                    <t t-if="o.reglement_mode">
+                                                        <t t-esc="dict (o.fields_get (allfields = ['reglement_mode']) ['reglement_mode'] ['selection']) [o.reglement_mode]"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span>Aucun</span>
+                                                    </t>
+
+                                                </t>
+                                                <t t-elif="o.ville == 'tamatave'">
+                                                    <t t-if="o.reglement_mode_tamatave">
+                                                        <t t-esc="o.reglement_mode_tamatave"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span>Aucun</span>
+                                                    </t>
+                                                </t>
                                                 <t t-else="">
                                                     <span>Aucun</span>
-                                                </t></td>
+
+                                                </t>
+
+                                            </td>
                                             <td t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"></td>
 
                                         </tr>
@@ -220,7 +238,14 @@
                                         <span t-esc="picking.name"/> ,
                                     </t>
                                 </div>
+                            </div><div class="row">
+                            <div class="col-3">
+                                <span>Réf BC:</span>
                             </div>
+                            <div class="col-6">
+                                <span t-esc="o.invoice_origin"/> ,
+                            </div>
+                        </div>
 
 
                         </div>
@@ -557,12 +582,30 @@
                                     </thead>
                                     <tbody class="invoice-body">
                                         <tr>
-                                            <td><t t-if="o.reglement_mode">
-                                                <t t-esc="dict (o.fields_get (allfields = ['reglement_mode']) ['reglement_mode'] ['selection']) [o.reglement_mode]"/>
-                                            </t>
+                                            <td>
+                                                <t t-if="o.ville == 'tana'">
+                                                    <t t-if="o.reglement_mode">
+                                                        <t t-esc="dict (o.fields_get (allfields = ['reglement_mode']) ['reglement_mode'] ['selection']) [o.reglement_mode]"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span>Aucun</span>
+                                                    </t>
+
+                                                </t>
+                                                <t t-elif="o.ville == 'tamatave'">
+                                                    <t t-if="o.reglement_mode_tamatave">
+                                                        <t t-esc="o.reglement_mode_tamatave"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span>Aucun</span>
+                                                    </t>
+                                                </t>
                                                 <t t-else="">
                                                     <span>Aucun</span>
-                                                </t></td>
+
+                                                </t>
+
+                                            </td>
                                             <td t-esc="o.invoice_date_due.strftime('%d/%m/%Y')"></td>
 
                                         </tr>
@@ -579,6 +622,14 @@
                                     <t t-foreach="o.picking_ids" t-as="picking">
                                         <span t-esc="picking.name"/> ,
                                     </t>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <span>Réf BC:</span>
+                                </div>
+                                <div class="col-6">
+                                    <span t-esc="o.invoice_origin"/> ,
                                 </div>
                             </div>
                         </div>

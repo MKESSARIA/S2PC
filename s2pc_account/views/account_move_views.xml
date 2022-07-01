@@ -11,12 +11,8 @@
                 </field>
                 <xpath expr="//group[@id='header_right_group']/div[@class='o_td_label']" position="before">
                     <field name="ville" string="Ville" required="True" widget="selection" />
-                </xpath>
-                <xpath expr="//div[@name='journal_div']" position="after">
-                    <label for="reglement_mode" />
-                    <div name="reglement_mode_div" class="d-flex">
-                        <field name="reglement_mode" />
-                    </div>
+                    <field name="reglement_mode" attrs="{'invisible': [('ville', '!=', 'tana')]}" />
+                    <field name="reglement_mode_tamatave" attrs="{'invisible': [('ville', '!=', 'tamatave')]}" />
                 </xpath>
             </field>
         </record>

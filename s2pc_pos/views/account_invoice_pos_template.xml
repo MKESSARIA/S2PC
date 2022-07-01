@@ -48,7 +48,7 @@
                                 <span>+261 32 05 707 91 / +261 32 07 184 88</span>
                             </t>
                             <br/>
-                                <span>Tel: +261 34 54 723 82 / +261 34 94 455 63</span>
+                            <span>Tel: +261 34 54 723 82 / +261 34 94 455 63</span>
                             <br/>
                             <span>Mail:</span>
                             <t t-if="o.company_id.email">
@@ -201,14 +201,31 @@
 
                                     <td t-esc="o.invoice_line_ids[r].product_id.default_code or ''"></td>
                                     <td t-esc="o.invoice_line_ids[r].product_id.display_name"></td>
-                                    <t t-if="o.get_lot_number(o.invoice_line_ids[r].move_id.invoice_origin, o.invoice_line_ids[r].product_id)">
+                                    <!--<t t-if="o.get_lot_number(o.invoice_line_ids[r].move_id.invoice_origin, o.invoice_line_ids[r].product_id)">
                                         <t t-set="bl_id"
                                            t-value="o.get_lot_number(o.invoice_line_ids[r].move_id.invoice_origin, o.invoice_line_ids[r].product_id)"/>
                                         <td t-esc="bl_id"/>
                                     </t>
                                     <t t-else="">
                                         <td><span></span></td>
-                                    </t>
+                                    </t>-->
+
+                                    <td>
+                                        <!--<span>valisoa rami</span>
+                                        <t t-set="lots"
+                                           t-value="o.invoice_line_ids[r].lots_grouped_by_quantity().items()"/>
+                                        <t t-if="lots and o.invoice_line_ids[r].product_id.tracking == 'serial'">
+                                            S/N: <span t-esc="', '.join([x[0] for x in lots])"/>
+                                        </t>
+                                        <t t-foreach="lots" t-as="lot">
+                                                <div>
+                                                    <span t-esc="lot[0]"/> (<span t-esc="lot[1]"/>)
+                                                </div>
+
+                                        </t>-->
+                                    </td>
+
+
                                     <td t-esc="o.invoice_line_ids[r].quantity"></td>
                                     <td t-esc="o.invoice_line_ids[r].price_unit"
                                         t-options='{"widget": "float", "precision": 2}'></td>

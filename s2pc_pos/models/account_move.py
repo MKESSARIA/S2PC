@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import api, models, fields, _
 from odoo.addons.s2pc_base.models.tools import amount_to_text_fr
+from collections import defaultdict
 
 
 class AccountMove(models.Model):
@@ -38,6 +39,11 @@ class AccountMove(models.Model):
 
         return lot
 
+    # @api.onchange("ville")
+    # def get_lot_pos(self):
+    #     if self.pos_order_ids:
+    #         print(self.pos_order_ids[0].lines[0].pack_lot_ids[0].lot_name)
+
 
 class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'
@@ -47,3 +53,23 @@ class AccountMoveLine(models.Model):
     def compute_weight(self):
         for rec in self:
             rec.weight = rec.product_id.weight or 0 * rec.quantity
+
+    prod_lot_ids = fields.Many2many(
+        comodel_name="stock.production.lot",
+        compute="_compute_prod_lots",
+        string="Production Lots",
+    )
+
+    @api.depends("move_line_ids")
+    def _compute_prod_lots(self):
+        for line in self:
+            line.prod_lot_ids = line.mapped("move_line_ids.move_line_ids.lot_id")
+
+    def lots_grouped_by_quantity(self):
+        lot_dict = defaultdict(float)
+        for sml in self.mapped("move_line_ids.move_line_ids"):
+            if sml.lot_id:
+                lot_dict[sml.lot_id.name] += sml.qty_done
+        return lot_dict
+
+
