@@ -24,6 +24,9 @@
         's2pc_contact',
         's2pc_product',
         'sale_stock',
+        "stock_picking_invoice_link",
+        "sale_management",
+        "s2pc_account"
     ],
 
     # always loaded
