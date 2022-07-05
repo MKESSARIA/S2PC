@@ -4,7 +4,7 @@
     <data>
         <template id="report_invoice_pos_document" name="Invoice document">
             <t t-call="s2pc_base.external_layout">
-                <div class="page">
+                <div class="page" style="font-size:14px; padding: 2px 2px !important;">
                     <div class="row">
                         <div class="col-1">
                             <img src="/s2pc_base/static/img/company_logo.jpg" style="max-height: 85px;"/>
@@ -161,14 +161,10 @@
 
 
                     </div>
-                    <br/>
                     <table class="invoice-table">
                         <thead>
                             <tr>
-                                <th style="width:10%">
-                                    <span>Ref.</span>
-                                </th>
-                                <th style="width:20%">
+                                <th style="width:40%">
                                     <span>Désignation</span>
                                 </th>
                                 <th style="width:10%">
@@ -181,12 +177,12 @@
                                     <span>Prix unit HT</span>
                                 </th>
                                 <th style="width:16%">
-                                    <span>Montant</span>
+                                    <span>Montant HT</span>
                                 </th>
-                                <th style="width:16%">
+                                <th style="width:7%">
                                     <span>Remise %</span>
                                 </th>
-                                <th style="width:16%">
+                                <th style="width:10%">
                                     <span>Poids</span>
                                 </th>
                             </tr>
@@ -199,7 +195,6 @@
                             <t t-foreach="range(line_range)" t-as="r">
                                 <tr t-if="int(r) &lt; len(o.invoice_line_ids)">
 
-                                    <td t-esc="o.invoice_line_ids[r].product_id.default_code or ''"></td>
                                     <td t-esc="o.invoice_line_ids[r].product_id.display_name"></td>
                                     <!--<t t-if="o.get_lot_number(o.invoice_line_ids[r].move_id.invoice_origin, o.invoice_line_ids[r].product_id)">
                                         <t t-set="bl_id"
@@ -236,9 +231,7 @@
                                 </tr>
                                 <tr t-if="not int(r) &lt; int(invoice_count)">
                                     <!-- Fill blank row since height style doesn't work in PDF report -->
-                                    <td>
-                                        <br/>
-                                    </td>
+
                                     <td>
                                         <br/>
                                     </td>
@@ -266,7 +259,7 @@
                         </tbody>
                         <tbody class="invoice-total">
                             <tr>
-                                <td></td>
+
                                 <td></td>
                                 <td></td>
                                 <td colspan="2" class="allow_border">Montant HT</td>
@@ -281,7 +274,7 @@
                             </tr>
 
                             <tr>
-                                <td></td>
+
                                 <td></td>
                                 <td></td>
                                 <td colspan="2" class="allow_border">Montant TVA</td>
@@ -292,7 +285,7 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td></td>
+
                                 <td></td>
                                 <td></td>
                                 <td colspan="2" class="allow_border">Montant TTC</td>
@@ -305,7 +298,6 @@
                         </tbody>
 
                     </table>
-                    <br/>
                     <div class="row">
                         <div class="col-12">
                             <span>Arrêtées et réçues les marchandises désignées ci-dessus.</span>
@@ -317,7 +309,6 @@
                             <span t-field="o.amount_total_text" style="font-size: 16px;font-weight: bold;"></span>
                         </div>
                     </div>
-                    <br/>
                     <div class="row">
                         <div class="col-12">
                             <span>VERIFICATION CONFORMITE</span>
