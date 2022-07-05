@@ -269,7 +269,7 @@
                                 </td>
                                 <td class="allow_border"></td>
                                 <td class="allow_border">
-                                    <span t-esc="sum(o.invoice_line_ids.mapped('weight')) or ''"></span>
+                                    <span t-esc="sum(o.invoice_line_ids.mapped('weight')) or ''" t-options='{"widget": "float", "precision": 2}'></span>
                                 </td>
                             </tr>
 
