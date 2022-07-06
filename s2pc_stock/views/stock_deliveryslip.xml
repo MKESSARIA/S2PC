@@ -254,7 +254,7 @@
                         <tbody class="invoice-total">
                             <tr>
                                 <td colspan="4" class="text-right">
-                                    <span style="text-align: left">TOTAL (Montant Total HT sans remise | Nbr colis | Pois kg)</span>
+                                    <span style="text-align: left">TOTAL (Montant Total HT | Nbr colis | Pois kg)</span>
                                 </td>
                                 <td class="text-right allow_border">
                                     <span t-esc="o.get_moves_report_values().get('total_amount', '')"
