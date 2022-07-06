@@ -3,7 +3,7 @@
     <data>
         <template id="report_picking_document" name="Picking document">
             <t t-call="s2pc_base.external_layout">
-                <div class="page">
+                <div class="page" style="font-size:14px; padding: 2px 2px !important;">
                     <div class="row">
                         <div class="col-1">
                             <img src="/s2pc_base/static/img/company_logo.jpg" style="max-height: 85px;"/>
@@ -162,13 +162,13 @@
                         </div>
 
                     </div>
-                    <br/>
+
                     <table class="picking-table">
                         <t t-set="has_serial_number" t-value="o.move_line_ids.mapped('lot_id')"
                            groups="stock.group_lot_on_delivery_slip"/>
                         <thead>
                             <tr>
-                                <th style="width:40%">
+                                <th style="width:43%">
                                     <span>Désignation</span>
                                 </th>
                                 <th style="width:13%">
@@ -180,8 +180,8 @@
                                 <th style="width:10%">
                                     <span>Prix unit HT</span>
                                 </th>
-                                <th style="width:16%">
-                                    <span>Montant</span>
+                                <th style="width:13%">
+                                    <span>Montant HT</span>
                                 </th>
                                 <th style="width:7%">
                                     <span>Nb colis</span>
@@ -277,7 +277,7 @@
                         </tbody>
 
                     </table>
-                    <br/>
+
                     <div class="row">
                         <div class="col-12">
                             <span>VERIFICATION CONFORMITE</span>
@@ -328,7 +328,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <br/>
+
                     <div class="row" style="margin-bottom:100px">
                         <div class="col-5">S2PC</div>
                         <div class="col-3">
