@@ -30,7 +30,7 @@ class AccountMove(models.Model):
 
         for i in bl:
             id_bl.append(i)
-        if len(id_bl):
+        if len(id_bl) > 0:
             for line in id_bl[0].move_ids_without_package:
                 if line.product_id == product_id_origin:
                     lot = line.lot_ids[0].name

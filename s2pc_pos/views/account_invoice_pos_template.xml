@@ -196,17 +196,19 @@
                                 <tr t-if="int(r) &lt; len(o.invoice_line_ids)">
 
                                     <td t-esc="o.invoice_line_ids[r].product_id.display_name"></td>
-                                    <!--<t t-if="o.get_lot_number(o.invoice_line_ids[r].move_id.invoice_origin, o.invoice_line_ids[r].product_id)">
+
+                                    <t t-if="o.get_lot_number(o.invoice_line_ids[r].move_id.invoice_origin, o.invoice_line_ids[r].product_id)">
                                         <t t-set="bl_id"
                                            t-value="o.get_lot_number(o.invoice_line_ids[r].move_id.invoice_origin, o.invoice_line_ids[r].product_id)"/>
                                         <td t-esc="bl_id"/>
                                     </t>
                                     <t t-else="">
                                         <td><span></span></td>
-                                    </t>-->
+                                    </t>
 
-                                    <td>
-                                        <!--<span>valisoa rami</span>
+
+                                    <!--<td>
+                                        &lt;!&ndash;<span>valisoa rami</span>
                                         <t t-set="lots"
                                            t-value="o.invoice_line_ids[r].lots_grouped_by_quantity().items()"/>
                                         <t t-if="lots and o.invoice_line_ids[r].product_id.tracking == 'serial'">
@@ -217,8 +219,8 @@
                                                     <span t-esc="lot[0]"/> (<span t-esc="lot[1]"/>)
                                                 </div>
 
-                                        </t>-->
-                                    </td>
+                                        </t>&ndash;&gt;
+                                    </td>-->
 
 
                                     <td t-esc="o.invoice_line_ids[r].quantity"></td>
@@ -269,7 +271,8 @@
                                 </td>
                                 <td class="allow_border"></td>
                                 <td class="allow_border">
-                                    <span t-esc="sum(o.invoice_line_ids.mapped('weight')) or ''" t-options='{"widget": "float", "precision": 2}'></span>
+                                    <span t-esc="sum(o.invoice_line_ids.mapped('weight')) or ''"
+                                          t-options='{"widget": "float", "precision": 2}'></span>
                                 </td>
                             </tr>
 
