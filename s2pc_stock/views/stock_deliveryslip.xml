@@ -257,7 +257,12 @@
                                     <span style="text-align: left">TOTAL (Montant Total HT | Nbr colis | Pois kg)</span>
                                 </td>
                                 <td class="text-right allow_border">
-                                    <span t-esc="o.get_moves_report_values().get('total_amount', '')"
+                                    <t t-set="line_total_amount" t-value="0"/>
+                                    <t t-foreach="o.move_line_ids" t-as="line_amount">
+                                        <t t-set="line_total_amount"
+                                           t-value="line_total_amount + (line_amount.qty_done * o.get_moves_report_values().get(line_amount.move_id, {}).get('price_unit', ''))"/>
+                                    </t>
+                                    <span t-esc="line_total_amount"
                                           t-options='{"widget": "float", "precision": 2}'/>
                                 </td>
                                 <td class="text-right allow_border">
