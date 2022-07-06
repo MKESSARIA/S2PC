@@ -343,7 +343,7 @@
                             <tr>
                                 <t t-foreach="o.invoice_line_ids" t-as="line">
                                     <tr>
-                                        <td t-esc="line.product_id.name" style="text-align: left"></td>
+                                        <td t-esc="line.product_id.display_name" style="text-align: left"></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
