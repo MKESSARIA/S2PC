@@ -29,7 +29,7 @@ class StockPicking(models.Model):
 	def _compute_show_validate(self):
 		super(StockPicking, self)._compute_show_validate()
 		for picking in self:
-			if not self.env.user.has_group('s2pc_stock.group_confirm_picking') and picking.picking_type_code in ['internal', 'incoming'] and picking.state == 'assigned':
+			if not self.env.user.has_group('s2pc_stock.group_confirm_picking') and picking.picking_type_code in ['internal', 'incoming', 'outgoing'] and picking.state == 'assigned':
 				picking.show_validate = False
 
 	@api.model

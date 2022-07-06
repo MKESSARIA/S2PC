@@ -9,7 +9,7 @@
 		<xpath expr="//button[@name='button_validate']" position="before">
 		  <field name="need_validation" invisible="1"/>
 		  <button name="action_need_validation" type="object" string="Submit for validation" class="oe_highlight"
-				  attrs="{'invisible':['|', '|', ('picking_type_code', 'not in', ['incoming', 'internal']), ('state', '!=', 'assigned'), ('need_validation', '=', True)]}"/>
+				  attrs="{'invisible':['|', '|', ('picking_type_code', 'not in', ['incoming', 'internal', 'outgoing']), ('state', '!=', 'assigned'), ('need_validation', '=', True)]}"/>
 		</xpath>
 		<xpath expr="//div[@name='button_box']" position="after">
 		  <widget name="web_ribbon" title="Nécessite une validation" bg_color="bg-info"

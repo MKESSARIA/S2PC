@@ -2,7 +2,7 @@
 <odoo>
   <data>
 	<record id="group_confirm_picking" model="res.groups">
-        <field name="name">Validateur transfert interne/réception</field>
+        <field name="name">Validateur transfert interne/réception/livraison</field>
         <field name="category_id" ref="s2pc_base.module_category_s2pc"/>
         <field name="implied_ids" eval="[(6, 0, [ref('stock.group_stock_user')])]"/>
     </record>
