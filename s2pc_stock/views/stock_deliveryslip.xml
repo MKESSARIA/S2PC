@@ -159,6 +159,14 @@
                                     <span t-field="o.partner_id.CIF"/>
                                 </div>
                             </div>
+                            <div t-if="o.origin" class="row">
+                                <div class="col-3">
+                                    <span>N° BC:</span>
+                                </div>
+                                <div class="col-6">
+                                    <span t-field="o.origin"/>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
