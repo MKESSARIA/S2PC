@@ -47,7 +47,10 @@
                                 </t>
                                 <t t-else="">
                                     <span>+261 32 05 707 91 / +261 32 07 184 88</span>
+
                                 </t>
+                                <br/>
+                                <span>Tel: +261 34 54 723 82 / +261 34 94 455 63</span>
                                 <br/>
                                 <span>Mail:</span>
                                 <t t-if="doc.company_id.email">
@@ -63,22 +66,13 @@
                                 <span>Bâtiment PRICE PLAZA 2, Andraharo</span>
                                 <br/>
                                 <span>Tel:</span>
-                                <span>+261 32 05 707 97</span>
+                                <span>+261 32 05 707 97 / +261 38 61 846 16</span>
                                 <br/>
                                 <span>Mail:</span>
                                 <span>commercial.tana@s2pc.mg</span>
                                 <br/>
                                 <span>Web:</span>
                                 <span>www.s2pc.mg</span>
-                                <br/>
-                                <!-- -->
-                                <span>STAT:</span>
-                                <t t-if="doc.company_id.partner_id.STAT">
-                                    <span t-esc="doc.company_id.partner_id.STAT"/>
-                                </t>
-                                <t t-else="">
-                                    <span>20221 31 1992 0 00021</span>
-                                </t>
                                 <br/>
                                 <span>NIF:</span>
                                 <t t-if="doc.company_id.partner_id.vat">
@@ -87,23 +81,33 @@
                                 <t t-else="">
                                     <span>1000150227 du 01/04/2003</span>
                                 </t>
+                                <br/>
+
+                                <span>STAT:</span>
+                                <t t-if="doc.company_id.partner_id.STAT">
+                                    <span t-esc="doc.company_id.partner_id.STAT"/>
+                                </t>
+                                <t t-else="">
+                                    <span>20221 31 1992 0 00021</span>
+                                </t>
+                                <br/>
+                                <span>CIF: 0112597/DGI-J du 09/06/2022</span>
+
                             </div>
-                            <div class="col-6" style="padding-top:50px">
+                            <div class="col-6" style="padding-top: 50px;">
                                 <div t-if="doc.user_id.name" class="row">
                                     <div class="col-3">
                                         <span>Vendeur :</span>
                                     </div>
                                     <div class="col-6">
                                         <span t-field="doc.user_id"/>
-
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-3">
                                         <span>Date:</span>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-6" style="font-weight: bold;">
                                         <span t-field="doc.date_order"/>
                                     </div>
                                 </div>
@@ -111,7 +115,7 @@
                                     <div class="col-3">
                                         <span>Client:</span>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-6" style="font-weight: bold;">
                                         <span t-field="doc.partner_id"/>
                                     </div>
                                 </div>
@@ -119,43 +123,47 @@
                                     <div class="col-3">
                                         <span>Adresse:</span>
                                     </div>
-                                    <div class="col-6">
-                                        <table class="table-address">
-                                            <tbody>
+                                    <div class="col-9">
+                                        <table>
+                                            <div>
                                                 <t t-if="doc.partner_id.city">
-                                                    <tr>
-                                                        <td>
-                                                            <span t-esc="doc.partner_id.city"/>
-                                                        </td>
-                                                    </tr>
+                                                    <span t-esc="doc.partner_id.city"/>
                                                 </t>
-                                                <t t-if="doc.partner_id.street">
-                                                    <tr>
-                                                        <td>
-                                                            <span t-esc="doc.partner_id.street"/>
-                                                        </td>
-                                                    </tr>
-                                                </t>
-                                                <tr>
-                                                    <td>
-                                                        <span>NIF:</span>
-                                                        <span t-esc="doc.partner_id.vat"/>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <span>STAT:</span>
-                                                        <span t-esc="doc.partner_id.STAT"/>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
+                                                <div t-if="doc.partner_id.street">
+                                                    <span t-esc="doc.partner_id.street"/>
+                                                </div>
+                                            </div>
                                         </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <span>NIF:</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <span t-field="doc.partner_id.vat"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <span>STAT:</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <span t-field="doc.partner_id.STAT"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <span>CIF:</span>
+                                    </div>
+                                    <div class="col-9">
+                                        <span t-field="doc.partner_id.CIF"/>
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                        <br/>
+                     
                         <div class="oe_structure"/>
 
 
@@ -166,16 +174,16 @@
                             <!-- In case we want to repeat the header, remove "display: table-row-group" -->
                             <thead style="display: table-row-group">
                                 <tr>
-                                    <th name="th_description" class="text-center">Réf.</th>
-                                    <th name="th_description" class="text-center">Description</th>
-                                    <th name="th_quantity" class="text-center">Quantité</th>
-                                    <th name="th_priceunit" class="text-center">Prix unitaire</th>
+
+                                    <th name="th_description" class="text-center" style="width:38%">Description</th>
+                                    <th name="th_quantity" class="text-center" style="width:15%">Quantité</th>
+                                    <th name="th_priceunit" class="text-center" style="width:12%">Prix unitaire</th>
                                     <th name="th_discount" class="text-center"
-                                        groups="product.group_discount_per_so_line">
+                                        groups="product.group_discount_per_so_line" style="width:10%">
                                         <span>Remise.%</span>
                                     </th>
-                                    <th name="th_taxes" class="text-center">TVA %</th>
-                                    <th name="th_subtotal" class="text-center">
+                                    <th name="th_taxes" class="text-center" style="width:10%" >TVA %</th>
+                                    <th name="th_subtotal" class="text-center" style="width:15%">
                                         <span groups="account.group_show_line_subtotals_tax_excluded">Montant</span>
                                         <span groups="account.group_show_line_subtotals_tax_included">Montant HT</span>
                                     </th>
@@ -198,15 +206,14 @@
                                     <tr t-if="int(line) &lt; len(doc.order_line)"
                                         t-att-class="'bg-200 font-weight-bold o_line_section' if doc.order_line[line].display_type == 'line_section' else 'font-italic o_line_note' if doc.order_line[line].display_type == 'line_note' else ''">
                                         <t t-if="not doc.order_line[line].display_type">
-                                            <td name="td_name"><span
-                                                    t-field="doc.order_line[line].product_id.default_code"/></td>
+
                                             <td name="td_name"><span t-field="doc.order_line[line].name"/></td>
-                                            <td name="td_quantity" class="text-right">
-                                                <span t-field="doc.order_line[line].product_uom_qty"/>
+                                            <td name="td_quantity">
+                                                <span t-esc="doc.order_line[line].product_uom_qty" t-options='{"widget": "float", "precision": 2}'/>
                                                 <span t-field="doc.order_line[line].product_uom"/>
                                             </td>
                                             <td name="td_priceunit" class="text-right">
-                                                <span t-field="doc.order_line[line].price_unit"/>
+                                                <span t-esc="doc.order_line[line].price_unit" t-options='{"widget": "float", "precision": 2}'/>
                                             </td>
                                             <td class="text-right"
                                                 groups="product.group_discount_per_so_line">
@@ -237,9 +244,7 @@
                                     </tr>
                                     <tr t-if="not int(line) &lt; int(len(doc.order_line))">
                                         <!-- Fill blank row since height style doesn't work in PDF report -->
-                                        <td>
-                                            <br/>
-                                        </td>
+
                                         <td>
                                             <br/>
                                         </td>
@@ -265,7 +270,7 @@
                             </tbody>
                             <tbody class="invoice-total">
                                 <tr>
-                                    <td></td>
+
                                     <td></td>
 
 
@@ -279,12 +284,12 @@
                                     </td>
                                     <!-- <td class="allow_border"></td>
                                      <td class="allow_border">
-                                         <span t-esc="sum(o.invoice_line_ids.mapped('weight')) or ''"></span>
+                                         <span t-esc="sum(doc.invoice_line_ids.mapped('weight')) or ''"></span>
                                      </td>-->
                                 </tr>
 
                                 <tr>
-                                    <td></td>
+
                                     <td></td>
                                     <td></td>
 
@@ -297,7 +302,7 @@
 
                                 </tr>
                                 <tr>
-                                    <td></td>
+
 
                                     <td></td>
                                     <td></td>
