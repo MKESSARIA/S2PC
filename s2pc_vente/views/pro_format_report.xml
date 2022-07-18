@@ -163,7 +163,7 @@
                             </div>
 
                         </div>
-                     
+
                         <div class="oe_structure"/>
 
 
@@ -271,13 +271,13 @@
                             <tbody class="invoice-total">
                                 <tr>
 
-                                    <td></td>
 
 
+
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td class="allow_border">Montant HT</td>
+                                    <td colspan="2" class="allow_border">Montant HT</td>
                                     <td class="allow_border">
                                         <span t-esc="doc.amount_untaxed"
                                               t-options='{"widget": "float", "precision": 2}'></span>
@@ -290,12 +290,12 @@
 
                                 <tr>
 
-                                    <td></td>
+
                                     <td></td>
 
                                     <td></td>
                                     <td></td>
-                                    <td class="allow_border">Montant TVA</td>
+                                    <td colspan="2" class="allow_border">Montant TVA</td>
                                     <td class="allow_border">
                                         <span t-esc="doc.amount_tax" t-options='{"widget": "float", "precision": 2}'/>
                                     </td>
@@ -304,11 +304,11 @@
                                 <tr>
 
 
+
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td class="allow_border">Montant TTC</td>
+                                    <td colspan="2" class="allow_border">Montant TTC</td>
                                     <td class="allow_border">
                                         <span t-esc="doc.amount_total"
                                               t-options='{"widget": "float", "precision": 2}'></span>

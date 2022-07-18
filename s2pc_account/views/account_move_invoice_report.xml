@@ -255,10 +255,8 @@
                     <table class="invoice-table">
                         <thead>
                             <tr>
-                                <th style="width:10%">
-                                    <span>Ref.</span>
-                                </th>
-                                <th style="width:30%">
+
+                                <th style="width:40%">
                                     <span>Désignation</span>
                                 </th>
                                 <th style="width:7%">
@@ -290,7 +288,7 @@
 
                                 <tr t-if="int(r) &lt; len(o.invoice_line_ids)">
 
-                                    <td t-esc="o.invoice_line_ids[r].product_id.default_code or ''"></td>
+
                                     <td t-esc="o.invoice_line_ids[r].product_id.display_name"></td>
                                     <td t-esc="o.invoice_line_ids[r].quantity"></td>
                                     <td t-esc="o.invoice_line_ids[r].price_unit"
@@ -304,9 +302,7 @@
                                 </tr>
                                 <tr t-if="not int(r) &lt; int(len(o.invoice_line_ids))">
                                     <!-- Fill blank row since height style doesn't work in PDF report -->
-                                    <td>
-                                        <br/>
-                                    </td>
+
                                     <td>
                                         <br/>
                                     </td>
@@ -332,7 +328,7 @@
                         </tbody>
                         <tbody class="invoice-total">
                             <tr>
-                                <td></td>
+
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -348,7 +344,7 @@
                             </tr>
 
                             <tr>
-                                <td></td>
+
                                 <td></td>
 
                                 <td></td>
@@ -359,7 +355,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td></td>
+
                                 <td></td>
 
                                 <td></td>
