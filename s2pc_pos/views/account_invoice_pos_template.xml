@@ -309,7 +309,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <span t-field="o.amount_total_text" style="font-size: 16px;font-weight: bold;"></span>
+                            <span t-esc="o.currency_id.amount_to_text(o.amount_total)" style="font-size: 16px;font-weight: bold;"></span>
                         </div>
                     </div>
                     <div class="row">
