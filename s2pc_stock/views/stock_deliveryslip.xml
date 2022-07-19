@@ -229,7 +229,7 @@
                                     <td
                                             t-esc="o.get_moves_report_values().get(o.move_line_ids[r].move_id, {}).get('package_count', '') or ''"
                                             class="text-right"/>
-                                    <td t-esc="o.get_moves_report_values().get(o.move_line_ids[r].move_id, {}).get('weight', '') * o.move_line_ids[r].qty_done or ''"
+                                    <td t-esc="o.get_moves_report_values().get(o.move_line_ids[r].move_id, {}).get('weight', '') * o.move_line_ids[r].qty_done or ''" t-options='{"widget": "float", "precision": 2}'
                                         class="text-right"/>
                                 </tr>
                                 <tr t-if="not int(r) &lt; len(o.move_line_ids)">
@@ -282,7 +282,7 @@
                                         <t t-set="total_weight"
                                            t-value="total_weight + (o.get_moves_report_values().get(wgt.move_id, {}).get('weight', '') * wgt.qty_done)"/>
                                     </t>
-                                    <span t-esc="total_weight"/>
+                                    <span t-esc="total_weight" t-options='{"widget": "float", "precision": 2}'/>
 
                                 </td>
 
