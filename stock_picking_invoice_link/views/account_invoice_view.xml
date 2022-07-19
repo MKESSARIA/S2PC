@@ -19,7 +19,7 @@
                 >
                 </button>
             </div>
-            <xpath expr="//div[@name='journal_div']" position="after">
+            <xpath expr="//group[@id='header_right_group']" position="inside">
                 <label for="invoice_origin" string="BC associé"/>
                 <div name="invoice_origin_div" class="d-flex">
                     <field name="invoice_origin"/>
