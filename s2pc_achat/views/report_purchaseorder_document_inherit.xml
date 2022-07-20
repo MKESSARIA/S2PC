@@ -174,25 +174,25 @@
 
                         </div>
                         <div class="oe_structure"/>
-                        <br/>
+
                         <!--<t t-set="display_discount" t-value="any(l.discount for l in doc.order_line)"/>-->
 
 
                         <table class="invoice-table">
                             <thead style="display: table-row-group">
                                 <tr>
-                                    <th name="th_description" class="text-center">Réf.</th>
-                                    <th name="th_description" class="text-center">Article</th>
-                                    <th name="th_description" class="text-center">Désignation</th>
-                                    <th name="th_description" class="text-center">Unité</th>
-                                    <th name="th_quantity" class="text-center">Qté</th>
-                                    <th name="th_priceunit" class="text-center">Prix unit</th>
-                                    <th name="th_discount" class="text-center"
+
+                                    <th name="th_description" style="width:30%" class="text-center">Article</th>
+                                    <th name="th_description" style="width:34%" class="text-center">Désignation</th>
+                                    <th name="th_description" style="width:5%" class="text-center">Unité</th>
+                                    <th name="th_quantity" style="width:4%" class="text-center">Qté</th>
+                                    <th name="th_priceunit" style="width:7%" class="text-center">Prix unit</th>
+                                    <th name="th_discount" style="width:5%" class="text-center"
                                         groups="product.group_discount_per_so_line">
                                         <span>Remise.%</span>
                                     </th>
-                                    <th name="th_taxes" class="text-center">PU net</th>
-                                    <th name="th_subtotal" class="text-center">
+                                    <th name="th_taxes" style="width:7%" class="text-center">PU net</th>
+                                    <th name="th_subtotal" style="width:8%" class="text-center">
                                         <span groups="account.group_show_line_subtotals_tax_excluded">Montant</span>
                                         <span groups="account.group_show_line_subtotals_tax_included">Montant HT</span>
                                     </th>
@@ -212,8 +212,7 @@
                                     <tr t-if="int(line) &lt; len(o.order_line)"
                                         t-att-class="'bg-200 font-weight-bold o_line_section' if o.order_line[line].display_type == 'line_section' else 'font-italic o_line_note' if o.order_line[line].display_type == 'line_note' else ''">
                                         <t t-if="not o.order_line[line].display_type">
-                                            <td name="td_name"><span
-                                                    t-field="o.order_line[line].product_id.default_code"/></td>
+
                                             <td name="td_name"><span t-field="o.order_line[line].product_id"/></td>
                                             <td name="td_name"><span t-field="o.order_line[line].name"/></td>
                                             <td name="td_quantity" class="text-right">
@@ -257,9 +256,7 @@
                                     </tr>
                                     <tr t-if="not int(line) &lt; int(len(o.order_line))">
 
-                                        <td>
-                                            <br/>
-                                        </td>
+
                                         <td>
                                             <br/>
                                         </td>
@@ -292,14 +289,14 @@
                             </tbody>
                             <tbody class="invoice-total">
                                 <tr>
+
+
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="allow_border">Montant HT</td>
+                                    <td class="allow_border" colspan="2">Montant HT</td>
                                     <td class="allow_border">
                                         <span t-esc="o.amount_untaxed"
                                               t-options='{"widget": "float", "precision": 2}'> </span> <span t-esc="o.currency_id.symbol"/>
@@ -308,28 +305,28 @@
                                 </tr>
 
                                 <tr>
+
+
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="allow_border">Montant TVA</td>
+                                    <td class="allow_border" colspan="2">Montant TVA</td>
                                     <td class="allow_border">
                                         <span t-esc="o.amount_tax" t-options='{"widget": "float", "precision": 2}'> </span> <span t-esc="o.currency_id.symbol"/>
                                     </td>
 
                                 </tr>
                                 <tr>
+
+
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="allow_border">Montant TTC</td>
+                                    <td class="allow_border" colspan="2">Montant TTC</td>
                                     <td class="allow_border">
                                         <span t-esc="o.amount_total"
                                               t-options='{"widget": "float", "precision": 2}'> </span> <span t-esc="o.currency_id.symbol"/>
