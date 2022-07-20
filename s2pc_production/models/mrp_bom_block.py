@@ -6,6 +6,9 @@ class ModelName(models.Model):
     _inherit = 'mrp.bom'
     product_qty = fields.Float(
         'Quantity', default=100, required=True)
+    standard_process = fields.Boolean(
+        string='STANDARD',
+        default=True, store=True)
 
     @api.constrains('bom_line_ids')
     def block_bom(self):
@@ -15,7 +18,8 @@ class ModelName(models.Model):
                 qtt_round = round(qtt.product_qty, 4)
                 list_qtt.append(qtt_round)
             total = round(sum(list_qtt), 4)
-            if total not in [0, 100]:
-                raise ValidationError(_("La somme des quantités des produits doit être à 100 au lieu de {}").format(
-                    total))
+            if rec.standard_process:
+                if total not in [0, 100]:
+                    raise ValidationError(_("La somme des quantités des produits doit être à 100 au lieu de {}").format(
+                        total))
         return True

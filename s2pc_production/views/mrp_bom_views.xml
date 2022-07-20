@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data>
+    <data>
 
-	<record id="mrp_bom_view_form_inherit" model="ir.ui.view">
-	  <field name="name">mrp.bom.view.form.inherit</field>
-	  <field name="model">mrp.bom</field>
-	  <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
-	  <field name="arch" type="xml">
-		<xpath expr="//field[@name='bom_line_ids']" position="attributes">
-		  <attribute name="widget">mrp_one2many</attribute>
-		  <attribute name="options">{'group': 'restricted_operation_id', 'referred': 'operation_ids'}</attribute>
-		</xpath>
-		<xpath expr="//field[@name='bom_line_ids']/tree" position="inside">
-		  <field name="restricted_operation_id" invisible="1"/>
-		</xpath>
-		<xpath expr="//field[@name='bom_line_ids']/tree/field[@name='sequence']" position="replace">
-		  <field name="sequence" invisible="1"/>
-		</xpath>
-	  </field>
-	</record>
+        <record id="mrp_bom_view_form_inherit" model="ir.ui.view">
+            <field name="name">mrp.bom.view.form.inherit</field>
+            <field name="model">mrp.bom</field>
+            <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='product_id']" position="after">
+                    <field name="standard_process"/>
+                </xpath>
+                <xpath expr="//field[@name='bom_line_ids']" position="attributes">
+                    <attribute name="widget">mrp_one2many</attribute>
+                    <attribute name="options">{'group': 'restricted_operation_id',
+                                               'referred': 'operation_ids'}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='bom_line_ids']/tree" position="inside">
+                    <field name="restricted_operation_id" invisible="1"/>
+                </xpath>
+                <xpath expr="//field[@name='bom_line_ids']/tree/field[@name='sequence']" position="replace">
+                    <field name="sequence" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
 
 
-  </data>
+    </data>
 </odoo>
