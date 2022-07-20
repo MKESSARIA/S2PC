@@ -7,7 +7,7 @@ class ModelName(models.Model):
     product_qty = fields.Float(
         'Quantity', default=100, required=True)
     standard_process = fields.Boolean(
-        string='STANDARD',
+        string='Standard',
         default=True, store=True)
 
     @api.constrains('bom_line_ids')
