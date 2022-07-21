@@ -1,8 +1,6 @@
 .invoice-header{
-    font-size: 26px;
+    font-size: 20px;
     font-weight: bold;
-    line-height: 24px;
-    padding-top: 10px;
     font-family: "Calibri";
 
 }
@@ -17,26 +15,28 @@ div > span {
 }
 
 .table-address * {
-    vertical-align: top;
+    vertical-align: middle;
     font-family: "Calibri";
 }
 
 .invoice-table * {
-    vertical-align: top;
+    vertical-align: middle;
     font-family: "Calibri";
 }
 
 .invoice-table > thead > tr > th{
-    height: 35px;
+    padding: 2px 2px;
     text-align: center;
     border: 1px solid black;
 }
 .invoice-body {
     border-bottom: 1px solid black;
+    padding: 2px 2px;
 }
 .invoice-body > tr > td{
     border-right: 1px solid black;
     border-left: 1px solid black;
+    padding: 2px 2px;
 }
 .invoice-total > tr > td.allow_border{
     border: 1px solid black;
@@ -45,12 +45,13 @@ div > span {
     width: 100%;
 }
 .conform-table * {
-    vertical-align: top;
+    vertical-align: middle;
     font-family: "Calibri";
 }
 .conform-table > thead > tr > th, .conform-table > tbody > tr > td{
     text-align: center;
     border: 1px solid black;
+    padding: 2px 2px;
 }
 .conform-table > tbody > tr > td.check-conform{
     width: 5%;

@@ -5,15 +5,18 @@
             <xpath expr="//t[@t-call='web.external_layout']" position="replace">
                 <t t-call="s2pc_achat.external_layout_achat">
 
-                    <div class="page" style="font-size:14px;padding: 2px 2px;" >
+                    <div class="page" style="font-size:14px;padding: 2px 2px;">
+
                         <div class="row">
                             <div class="col-1">
                                 <img src="/s2pc_base/static/img/company_logo.jpg" style="max-height: 85px;"/>
                             </div>
-                            <div class="col-5" >
-                                <p class="invoice-header" name="moto" style="font-size:20px;">
+                            <div class="col-5">
+                                <div style="font-size: 20px;
+                                    font-weight: bold;
+                                    font-family: Calibri;">
                                     Société des Peintures et des Produits Chimiques
-                                </p>
+                                </div>
                                 <span class="invoice-title">Usine et siège:</span>
                                 <br/>
                                 <t t-if="o.company_id.street and o.company_id.zip and o.company_id.city">
@@ -183,7 +186,7 @@
                             <thead style="display: table-row-group">
                                 <tr>
 
-                                    <th name="th_description" style="width:30%" class="text-center">Article</th>
+                                    <th name="th_description" style="width:30%;" class="text-center">Article</th>
                                     <th name="th_description" style="width:32%" class="text-center">Désignation</th>
                                     <th name="th_description" style="width:5%" class="text-center">Unité</th>
                                     <th name="th_quantity" style="width:4%" class="text-center">Qté</th>
@@ -226,19 +229,24 @@
 
                                             </td>
                                             <td name="td_priceunit" class="text-right">
-                                                <span t-esc="o.order_line[line].price_unit" t-options='{"widget": "float", "precision": 2}'/>
+                                                <span t-esc="o.order_line[line].price_unit"
+                                                      t-options='{"widget": "float", "precision": 2}'/>
                                             </td>
                                             <td class="text-right"
                                                 groups="product.group_discount_per_so_line">
-                                                <span t-esc="o.order_line[line].discount" t-options='{"widget": "float", "precision": 2}'/>
+                                                <span t-esc="o.order_line[line].discount"
+                                                      t-options='{"widget": "float", "precision": 2}'/>
                                             </td>
                                             <td name="td_taxes" class="text-right">
-                                                <span t-esc="o.order_line[line].price_unit *  (1 - o.order_line[line].discount)" t-options='{"widget": "float", "precision": 2}'/>
+                                                <span t-esc="o.order_line[line].price_unit *  (1 - o.order_line[line].discount)"
+                                                      t-options='{"widget": "float", "precision": 2}'/>
                                             </td>
                                             <td name="td_subtotal" class="text-right o_price_total">
-                                                <span t-esc="o.order_line[line].price_subtotal" t-options='{"widget": "float", "precision": 2}'
+                                                <span t-esc="o.order_line[line].price_subtotal"
+                                                      t-options='{"widget": "float", "precision": 2}'
                                                       groups="account.group_show_line_subtotals_tax_excluded"/>
-                                                <span t-esc="o.order_line[line].price_total" t-options='{"widget": "float", "precision": 2}'
+                                                <span t-esc="o.order_line[line].price_total"
+                                                      t-options='{"widget": "float", "precision": 2}'
                                                       groups="account.group_show_line_subtotals_tax_included"/>
                                             </td>
                                         </t>
@@ -300,7 +308,8 @@
                                     <td class="allow_border" colspan="2">Montant HT</td>
                                     <td class="allow_border">
                                         <span t-esc="o.amount_untaxed"
-                                              t-options='{"widget": "float", "precision": 2}'> </span> <span t-esc="o.currency_id.symbol"/>
+                                              t-options='{"widget": "float", "precision": 2}'></span> <span
+                                            t-esc="o.currency_id.symbol"/>
                                     </td>
 
                                 </tr>
@@ -315,7 +324,9 @@
                                     <td></td>
                                     <td class="allow_border" colspan="2">Montant TVA</td>
                                     <td class="allow_border">
-                                        <span t-esc="o.amount_tax" t-options='{"widget": "float", "precision": 2}'> </span> <span t-esc="o.currency_id.symbol"/>
+                                        <span t-esc="o.amount_tax"
+                                              t-options='{"widget": "float", "precision": 2}'></span> <span
+                                            t-esc="o.currency_id.symbol"/>
                                     </td>
 
                                 </tr>
@@ -330,16 +341,19 @@
                                     <td class="allow_border" colspan="2">Montant TTC</td>
                                     <td class="allow_border">
                                         <span t-esc="o.amount_total"
-                                              t-options='{"widget": "float", "precision": 2}'> </span> <span t-esc="o.currency_id.symbol"/>
+                                              t-options='{"widget": "float", "precision": 2}'></span> <span
+                                            t-esc="o.currency_id.symbol"/>
                                     </td>
 
                                 </tr>
                             </tbody>
                         </table>
-
-                        <p t-field="o.notes"/>
+                        <t t-if="o.notes">
+                            <p t-field="o.notes"/>
+                        </t>
 
                         <div class="oe_structure"/>
+
                         <div class="row">
                             <div class="col-4"/>
                             <div class="col-4"/>
@@ -347,14 +361,11 @@
                                 Direction
                                 <br/>
                                 <br/>
-
                             </div>
                         </div>
 
 
                     </div>
-
-
 
 
                 </t>
