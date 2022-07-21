@@ -47,22 +47,22 @@ class Hr_Payslip(models.Model):
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "HSUPP150":
                                 line["quantity"] += work.duration
-                        elif self.env.ref(
+                        if self.env.ref(
                             "alpha_payslip.hs_type_30"
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "HSUPP130":
                                 line["quantity"] += work.duration
-                        elif self.env.ref(
+                        if self.env.ref(
                             "alpha_payslip.hs_type_dimanche"
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "TDIM40":
                                 line["quantity"] += work.duration
-                        elif self.env.ref(
+                        if self.env.ref(
                             "alpha_payslip.hs_type_ferie"
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "HSUPP100":
                                 line["quantity"] += work.duration
-                        elif self.env.ref(
+                        if self.env.ref(
                             "alpha_payslip.hs_type_nuit"
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "H45405":
