@@ -7,3 +7,5 @@ from . import hr_payslip
 from . import hr_salary_rule
 from . import hr_payslip_line
 from . import company
+from . import hr_work_entry
+from . import type_hs

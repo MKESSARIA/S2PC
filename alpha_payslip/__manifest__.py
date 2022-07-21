@@ -15,10 +15,10 @@
     "category": "Uncategorized",
     "version": "0.1",
     # any module necessary for this one to work correctly
-    "depends": ["base", "hr_contract", "hr", "hr_payroll"],
+    "depends": ["base", "hr_contract", "hr_work_entry", "hr", "hr_payroll"],
     # always loaded
     "data": [
-        # 'security/ir.model.access.csv',
+        "security/ir.model.access.csv",
         "views/base_external_layout.xml",
         "views/views.xml",
         "views/templates.xml",
@@ -28,11 +28,9 @@
         "views/hr_payslip.xml",
         "views/hr_contract_view_too.xml",
         "views/hr_salary_rule_views.xml",
+        "views/hr_work_entry.xml",
         "views/company.xml",
-    ],
-    # only loaded in demonstration mode
-    "demo": [
-        "demo/demo.xml",
+        "data/data.xml",
     ],
     "license": "LGPL-3",
     "assets": {

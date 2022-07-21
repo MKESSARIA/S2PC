@@ -11,22 +11,73 @@ from datetime import datetime
 
 class Hr_Payslip(models.Model):
     _inherit = "hr.payslip"
-    commentaire = fields.Text(
-        string='Commentaire',
-        required=False)
+    commentaire = fields.Text(string="Commentaire", required=False)
 
-    paid_date = fields.Date(
-        string='Date de paie ',
-        required=False, readonly=True)
+    paid_date = fields.Date(string="Date de paie ", required=False, readonly=True)
 
     def compute_sheet(self):
-        payslips = self.filtered(lambda slip: slip.state in ['draft', 'verify'])
+        payslips = self.filtered(lambda slip: slip.state in ["draft", "verify"])
         # delete old payslip lines
         payslips.line_ids.unlink()
         for payslip in payslips:
-            number = payslip.number or self.env['ir.sequence'].next_by_code('salary.slip')
-            lines = [(0, 0, line) for line in payslip._get_payslip_lines()]
-            payslip.write({'line_ids': lines, 'number': number, 'state': 'verify', 'compute_date': fields.Date.today()})
+            number = payslip.number or self.env["ir.sequence"].next_by_code(
+                "salary.slip"
+            )
+            # lines = [(0, 0, line) for line in payslip._get_payslip_lines()]
+            demo = []
+            for line in payslip._get_payslip_lines():
+                if line["code"] in ["HSUPP150", "HSUPP130", "TDIM40", "HSUPP100"]:
+                    work_entries = self.env["hr.work.entry"].search(
+                        [
+                            ("date_start", "<=", self.date_to),
+                            ("date_stop", ">=", self.date_from),
+                            ("employee_id", "=", self.employee_id.id),
+                            (
+                                "work_entry_type_id",
+                                "=",
+                                self.env.ref("alpha_payslip.hr_work_type_hs").id,
+                            ),
+                        ]
+                    )
+                    line["amount"] = 0
+                    line["quantity"] = 0
+                    for work in work_entries:
+                        if self.env.ref(
+                            "alpha_payslip.hs_type_50"
+                        ).id in work.type_hs_ids.mapped("id"):
+                            if line["code"] == "HSUPP150":
+                                line["quantity"] += work.duration
+                        elif self.env.ref(
+                            "alpha_payslip.hs_type_30"
+                        ).id in work.type_hs_ids.mapped("id"):
+                            if line["code"] == "HSUPP130":
+                                line["quantity"] += work.duration
+                        elif self.env.ref(
+                            "alpha_payslip.hs_type_dimanche"
+                        ).id in work.type_hs_ids.mapped("id"):
+                            if line["code"] == "TDIM40":
+                                line["quantity"] += work.duration
+                        elif self.env.ref(
+                            "alpha_payslip.hs_type_ferie"
+                        ).id in work.type_hs_ids.mapped("id"):
+                            if line["code"] == "HSUPP100":
+                                line["quantity"] += work.duration
+                        elif self.env.ref(
+                            "alpha_payslip.hs_type_nuit"
+                        ).id in work.type_hs_ids.mapped("id"):
+                            if line["code"] == "H45405":
+                                line["quantity"] += work.duration
+
+                    line["amount"] = line["quantity"] * self.contract_id.hourly_salary
+                demo.append((0, 0, line))
+            payslip.write(
+                {
+                    "line_ids": demo,
+                    "number": number,
+                    "state": "verify",
+                    "compute_date": fields.Date.today(),
+                }
+            )
         self.paid_date = datetime.now()
         return True
 
@@ -143,4 +194,5 @@ class Hr_Payslip(models.Model):
                     "base": base,
                     "nombre": nombre,
                 }
+
         return result.values()
