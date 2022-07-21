@@ -5,13 +5,13 @@
             <xpath expr="//t[@t-call='web.external_layout']" position="replace">
                 <t t-call="s2pc_base.external_layout">
 
-                    <div class="page">
+                    <div class="page" style="font-size:14px;padding: 2px 2px;" >
                         <div class="row">
                             <div class="col-1">
                                 <img src="/s2pc_base/static/img/company_logo.jpg" style="max-height: 85px;"/>
                             </div>
-                            <div class="col-5">
-                                <p class="invoice-header" name="moto">
+                            <div class="col-5" >
+                                <p class="invoice-header" name="moto" style="font-size:20px;">
                                     Société des Peintures et des Produits Chimiques
                                 </p>
                                 <span class="invoice-title">Usine et siège:</span>
@@ -82,7 +82,7 @@
                                 <span>CIF: 0112597/DGI-J du 09/06/2022</span>
                             </div>
                             <div class="col-6" style="padding-top:50px">
-                                <div class="invoice-header">
+                                <div class="invoice-header" style="font-size:20px;">
                                     <span t-if="o.state in ['draft', 'sent', 'to approve']">Demande de devis : <span
                                             t-field="o.name"/></span>
                                     <span t-if="o.state in ['purchase', 'done']">Bon de commande Achat : <span
@@ -170,6 +170,7 @@
 
                                 </div>
 
+
                             </div>
 
                         </div>
@@ -183,7 +184,7 @@
                                 <tr>
 
                                     <th name="th_description" style="width:30%" class="text-center">Article</th>
-                                    <th name="th_description" style="width:34%" class="text-center">Désignation</th>
+                                    <th name="th_description" style="width:32%" class="text-center">Désignation</th>
                                     <th name="th_description" style="width:5%" class="text-center">Unité</th>
                                     <th name="th_quantity" style="width:4%" class="text-center">Qté</th>
                                     <th name="th_priceunit" style="width:7%" class="text-center">Prix unit</th>
@@ -192,7 +193,7 @@
                                         <span>Remise.%</span>
                                     </th>
                                     <th name="th_taxes" style="width:7%" class="text-center">PU net</th>
-                                    <th name="th_subtotal" style="width:8%" class="text-center">
+                                    <th name="th_subtotal" style="width:10%" class="text-center">
                                         <span groups="account.group_show_line_subtotals_tax_excluded">Montant</span>
                                         <span groups="account.group_show_line_subtotals_tax_included">Montant HT</span>
                                     </th>
@@ -200,8 +201,8 @@
                                 </tr>
                             </thead>
                             <tbody class="invoice-body">
-                                <t t-if="len(o.order_line) &lt; 6" t-set="line_range" t-value="6"/>
-                                <t t-else="not len(o.order_line) &lt; 6" t-set="line_range"
+                                <t t-if="len(o.order_line) &lt; 1" t-set="line_range" t-value="1"/>
+                                <t t-else="not len(o.order_line) &lt; 1" t-set="line_range"
                                    t-value="len(o.order_line)"/>
 
                                 <t t-set="current_subtotal" t-value="0"/>
@@ -225,19 +226,19 @@
 
                                             </td>
                                             <td name="td_priceunit" class="text-right">
-                                                <span t-field="o.order_line[line].price_unit"/>
+                                                <span t-esc="o.order_line[line].price_unit" t-options='{"widget": "float", "precision": 2}'/>
                                             </td>
                                             <td class="text-right"
                                                 groups="product.group_discount_per_so_line">
-                                                <span t-field="o.order_line[line].discount"/>
+                                                <span t-esc="o.order_line[line].discount" t-options='{"widget": "float", "precision": 2}'/>
                                             </td>
                                             <td name="td_taxes" class="text-right">
-                                                <span t-esc="o.order_line[line].price_unit *  (1 - o.order_line[line].discount)"/>
+                                                <span t-esc="o.order_line[line].price_unit *  (1 - o.order_line[line].discount)" t-options='{"widget": "float", "precision": 2}'/>
                                             </td>
                                             <td name="td_subtotal" class="text-right o_price_total">
-                                                <span t-field="o.order_line[line].price_subtotal"
+                                                <span t-esc="o.order_line[line].price_subtotal" t-options='{"widget": "float", "precision": 2}'
                                                       groups="account.group_show_line_subtotals_tax_excluded"/>
-                                                <span t-field="o.order_line[line].price_total"
+                                                <span t-esc="o.order_line[line].price_total" t-options='{"widget": "float", "precision": 2}'
                                                       groups="account.group_show_line_subtotals_tax_included"/>
                                             </td>
                                         </t>

@@ -5,14 +5,14 @@
             <xpath expr="//t[@t-call='web.external_layout']" position="replace">
 
                 <t t-call="s2pc_base.external_layout">
-                    <div class="page">
+                    <div class="page" style="font-size:14px;padding: 2px 2px;">
                         <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
                         <div class="row">
                             <div class="col-1">
                                 <img src="/s2pc_base/static/img/company_logo.jpg" style="max-height: 85px;"/>
                             </div>
                             <div class="col-5">
-                                <p class="invoice-header" name="moto">
+                                <p class="invoice-header" name="moto" style="font-size:20px;">
                                     Société des Peintures et des Produits Chimiques
                                 </p>
                                 <span class="invoice-title">Usine et siège:</span>
@@ -82,7 +82,7 @@
                                 <span>CIF: 0112597/DGI-J du 09/06/2022</span>
                             </div>
                             <div class="col-6" style="padding-top:50px">
-                                <div class="invoice-header">
+                                <div class="invoice-header" style="font-size:20px;">
                                     <span t-if="o.state in ['draft', 'sent', 'to approve']">Demande de devis : <span
                                             t-field="o.name"/></span>
                                     <span t-if="o.state in ['purchase', 'done']">Bon de commande Achat : <span
@@ -187,8 +187,8 @@
                                 </tr>
                             </thead>
                             <tbody class="invoice-body">
-                                <t t-if="len(o.order_line) &lt; 22" t-set="line_range" t-value="22"/>
-                                <t t-else="not len(o.order_line) &lt; 22" t-set="line_range"
+                                <t t-if="len(o.order_line) &lt; 1" t-set="line_range" t-value="1"/>
+                                <t t-else="not len(o.order_line) &lt; 1" t-set="line_range"
                                    t-value="len(o.order_line)"/>
 
                                 <t t-set="current_subtotal" t-value="0"/>
