@@ -26,7 +26,13 @@ class Hr_Payslip(models.Model):
             # lines = [(0, 0, line) for line in payslip._get_payslip_lines()]
             demo = []
             for line in payslip._get_payslip_lines():
-                if line["code"] in ["HSUPP150", "HSUPP130", "TDIM40", "HSUPP100"]:
+                if line["code"] in [
+                    "HSUPP150",
+                    "HSUPP130",
+                    "TDIM40",
+                    "HSUPP100",
+                    "HSN500",
+                ]:
                     work_entries = self.env["hr.work.entry"].search(
                         [
                             ("date_start", "<=", self.date_to),
@@ -65,7 +71,7 @@ class Hr_Payslip(models.Model):
                         if self.env.ref(
                             "alpha_payslip.hs_type_nuit"
                         ).id in work.type_hs_ids.mapped("id"):
-                            if line["code"] == "H45405":
+                            if line["code"] == "HSN500":
                                 line["quantity"] += work.duration
 
                     line["amount"] = line["quantity"] * self.contract_id.hourly_salary
