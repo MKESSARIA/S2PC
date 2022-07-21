@@ -42,48 +42,48 @@
                                         <tr>
                                             <td>
                                                 <div class="div1">
-                                            <span t-esc="o.company_id.name"/>
-                                            <!--<br/>
-                                            <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>-->
-                                            <br/>
-                                            <t t-if="o.company_id.street and o.company_id.zip and o.company_id.city">
-                                                <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>
-                                            </t>
+                                                    <span t-esc="o.company_id.name"/>
+                                                    <!--<br/>
+                                                    <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>-->
+                                                    <br/>
+                                                    <t t-if="o.company_id.street and o.company_id.zip and o.company_id.city">
+                                                        <span t-esc="o.company_id.street + ', '+ o.company_id.zip + ' - ' + o.company_id.city"/>
+                                                    </t>
 
-                                            <t t-if="o.company_id.phone">
-                                                <span>Tel:</span>
-                                                <span t-esc="o.company_id.phone"/>
-                                            </t>
-                                            <t t-if="o.company_id.phone and o.company_id.mobile">
-                                                <span>/</span>
-                                            </t>
-                                            <t t-if="o.company_id.mobile">
-                                                <span t-esc="o.company_id.mobile"/>
-                                            </t>
+                                                    <t t-if="o.company_id.phone">
+                                                        <span>Tel:</span>
+                                                        <span t-esc="o.company_id.phone"/>
+                                                    </t>
+                                                    <t t-if="o.company_id.phone and o.company_id.mobile">
+                                                        <span>/</span>
+                                                    </t>
+                                                    <t t-if="o.company_id.mobile">
+                                                        <span t-esc="o.company_id.mobile"/>
+                                                    </t>
 
 
-                                            <t t-if="o.company_id.email">
-                                                <br/>
-                                                <span>Mail:</span>
-                                                <span t-esc="o.company_id.email"/>
-                                            </t>
-                                            <br/>
-                                            <t t-if="o.company_id.nif">
-                                                <span>NIF :</span>
-                                                <span t-esc="o.company_id.nif"/>
-                                            </t>
-                                            <br/>
-                                            <t t-if="o.company_id.stat">
-                                                <span>STAT :</span>
-                                                <span t-esc="o.company_id.stat"/>
-                                            </t>
-                                        </div>
+                                                    <t t-if="o.company_id.email">
+                                                        <br/>
+                                                        <span>Mail:</span>
+                                                        <span t-esc="o.company_id.email"/>
+                                                    </t>
+                                                    <br/>
+                                                    <t t-if="o.company_id.nif">
+                                                        <span>NIF :</span>
+                                                        <span t-esc="o.company_id.nif"/>
+                                                    </t>
+                                                    <br/>
+                                                    <t t-if="o.company_id.stat">
+                                                        <span>STAT :</span>
+                                                        <span t-esc="o.company_id.stat"/>
+                                                    </t>
+                                                </div>
                                             </td>
-                                            <td >
+                                            <td>
                                                 <div class="div2">
-                                            <img t-att-src="image_data_uri(o.company_id.logo)" align="left"
-                                                 style="max-height: 100px; float:right; max-width: 200px;"/>
-                                        </div>
+                                                    <img t-att-src="image_data_uri(o.company_id.logo)" align="left"
+                                                         style="max-height: 100px; float:right; max-width: 200px;"/>
+                                                </div>
                                             </td>
                                         </tr>
 
@@ -107,7 +107,14 @@
                                 </td>
                                 <td class="tgv-34fe" colspan="2">
                                     <span style="font-weight:bold;font-style:normal">CODE
-                                        ADH OSTIE</span>
+                                        ADH</span>
+                                    <t t-if="o.employee_id.work_location_id.name == 'S2PC Tamatave' ">
+                                        <span style="font-weight:bold;font-style:normal">OMSIE</span>
+                                    </t><t t-else="">
+                                        <span style="font-weight:bold;font-style:normal">OSTIE</span>
+                                    </t>
+
+                                    <div class="oe_structure"/>
                                 </td>
                             </tr>
                             <tr>
@@ -124,7 +131,7 @@
                                 </td>
                                 <td class="tgv-0pky" colspan="2" rowspan="2">
                                     <span t-esc="o.contract_id.contract_type_id.name"/>
-                                    <span t-esc="o.contract_id.contrat_categorie"/>
+                                    <span t-esc="o.contract_id.contrat_categorie.upper()"/>
                                 </td>
                                 <td class="tgv-0pky" colspan="2" rowspan="2">
                                     <span t-esc="o.employee_id.cnaps"/>
