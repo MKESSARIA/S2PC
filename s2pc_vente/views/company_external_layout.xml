@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="footer">
-            <div class="row" style="border-top: 1px solid black;">
+            <div class="row" style="border-top: 1px solid black; font-family: Calibri;">
                 <div class="col-4">
                     <span t-esc="o.name" class="text-right"/>
                 </div>

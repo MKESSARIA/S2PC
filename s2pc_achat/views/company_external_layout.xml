@@ -3,6 +3,7 @@
     <template id="external_layout_achat" name="s2pc_achat.external_layout_achat">
         <t t-if="not o" t-set="o" t-value="doc"/>
         <t t-if="not company">
+
             <!-- Multicompany -->
             <t t-if="company_id">
                 <t t-set="company" t-value="company_id"/>
@@ -23,7 +24,7 @@
             </div>
         </div>
         <div class="footer">
-            <div class="row" style="border-top: 1px solid black;">
+            <div class="row" style="border-top: 1px solid black; font-family: Calibri; ">
                 <div class="col-4">
                     <span t-esc="o.name" class="text-right"/>
                 </div>
