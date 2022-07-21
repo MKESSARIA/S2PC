@@ -4,7 +4,7 @@
                   inherit_id="purchase.report_purchasequotation_document">
             <xpath expr="//t[@t-call='web.external_layout']" position="replace">
 
-                <t t-call="s2pc_base.external_layout">
+                <t t-call="s2pc_achat.external_layout_achat">
                     <div class="page" style="font-size:14px;padding: 2px 2px;">
                         <t t-set="o" t-value="o.with_context(lang=o.partner_id.lang)"/>
                         <div class="row">
