@@ -30,6 +30,7 @@
         "views/account_move_views.xml",
         "views/account_bank_statement_views.xml",
         "views/account_move_invoice_report.xml",
+        "views/company_external_layout.xml",
     ],
     # only loaded in demonstration mode
     "demo": [],
