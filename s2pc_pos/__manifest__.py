@@ -36,6 +36,7 @@
         # views
         'views/account_invoice_pos_template.xml',
         'views/account_invoice_pos_report.xml',
+        'views/company_external_layout.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
