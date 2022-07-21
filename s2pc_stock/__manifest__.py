@@ -34,6 +34,7 @@
         'report/stock_report_views.xml',
         'views/stock_deliveryslip.xml',
         'views/stock_quant_view.xml',
+        'views/company_external_layout.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

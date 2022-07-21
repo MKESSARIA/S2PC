@@ -2,16 +2,16 @@
 <odoo>
     <data>
         <template id="report_picking_document" name="Picking document">
-            <t t-call="s2pc_base.external_layout">
-                <div class="page" style="font-size:14px; padding: 2px 2px !important;">
+            <t t-call="s2pc_stock.external_layout_stock">
+                <div class="page" style="font-size:14px; padding: 2px 2px;">
                     <div class="row">
                         <div class="col-1">
                             <img src="/s2pc_base/static/img/company_logo.jpg" style="max-height: 85px;"/>
                         </div>
-                        <div class="col-5 picking-header" name="moto">
+                        <div class="col-5 picking-header" name="moto" style="font-size:20px;">
                             Société des Peintures et des Produits Chimiques
                         </div>
-                        <div class="col-6 picking-header">
+                        <div class="col-6 picking-header" style="font-size:20px;">
                             <span t-if="o.picking_type_code == 'incoming'">BON DE RECEPTION <span
                                     t-field="o.name"/></span>
                             <span t-if="o.picking_type_code == 'outgoing'">BON DE LIVRAISON <span
@@ -202,8 +202,8 @@
                         </thead>
 
                         <tbody class="picking-body">
-                            <t t-if="len(o.move_line_ids) &lt; 7" t-set="line_range" t-value="7"/>
-                            <t t-else="not len(o.move_line_ids) &lt; 7" t-set="line_range"
+                            <t t-if="len(o.move_line_ids) &lt; 1" t-set="line_range" t-value="1"/>
+                            <t t-else="not len(o.move_line_ids) &lt; 1" t-set="line_range"
                                t-value="len(o.move_line_ids)"/>
                             <t t-foreach="range(int(line_range))" t-as="r">
                                 <tr t-if="int(r) &lt; len(o.move_line_ids)">
