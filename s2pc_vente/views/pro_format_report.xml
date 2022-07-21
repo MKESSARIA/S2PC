@@ -2,18 +2,18 @@
     <data>
         <template id="report_saleorder_pro_forma_inherit" inherit_id="sale.report_saleorder_document">
             <xpath expr="//t[@t-call='web.external_layout']" position="replace">
-                <t t-call="s2pc_base.external_layout">
+                <t t-call="s2pc_vente.external_layout_vente">
 
-                    <div class="page">
+                    <div class="page" style="font-size:14px;padding: 2px 2px;">
 
                         <div class="row">
                             <div class="col-1">
                                 <img src="/s2pc_base/static/img/company_logo.jpg" style="max-height: 85px;"/>
                             </div>
-                            <div class="col-5 invoice-header" name="moto">
+                            <div class="col-5 invoice-header" name="moto" style="font-size:20px;">
                                 Société des Peintures et des Produits Chimiques
                             </div>
-                            <div class="col-6 invoice-header">
+                            <div class="col-6 invoice-header" style="font-size:20px;">
                                 <span>
                                     FACTURE PRO-FORMA
                                 </span>
@@ -190,8 +190,8 @@
                                 </tr>
                             </thead>
                             <tbody class="invoice-body">
-                                <t t-if="len(doc.order_line) &lt; 12" t-set="line_range" t-value="12"/>
-                                <t t-else="not len(doc.order_line) &lt; 12" t-set="line_range"
+                                <t t-if="len(doc.order_line) &lt; 1" t-set="line_range" t-value="1"/>
+                                <t t-else="not len(doc.order_line) &lt; 11" t-set="line_range"
                                    t-value="len(doc.order_line)"/>
 
                                 <t t-set="current_subtotal" t-value="0"/>

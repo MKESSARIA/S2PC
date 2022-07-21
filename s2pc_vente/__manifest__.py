@@ -28,6 +28,7 @@
         'views/hide_report.xml',
         'views/pro_format_report.xml',
         'views/view_order_form_inherit.xml',
+        'views/company_external_layout.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
