@@ -1,0 +1,32 @@
+<odoo>
+  <data noupdate="0">
+
+    <record id="hs_type_nuit" model="type.hs">
+      <field name="name">Nuit</field>
+    </record>
+
+    <record id="hs_type_dimanche" model="type.hs">
+      <field name="name">Dimanche</field>
+    </record>
+
+    <record id="hs_type_ferie" model="type.hs">
+      <field name="name">Ferié</field>
+    </record>
+
+    <record id="hs_type_30" model="type.hs">
+      <field name="name">HS 30%</field>
+    </record>
+
+    <record id="hs_type_50" model="type.hs">
+      <field name="name">HS 50%</field>
+    </record>
+
+    <!-- Type de prestation par defautt -->
+    <record id="hr_work_type_hs" model="hr.work.entry.type">
+      <field name="name">HS</field>
+      <field name="code">WORK999</field>
+      <field name="sequence">8</field>
+      <field name="round_days">NO</field>
+    </record>
+  </data>
+</odoo>
