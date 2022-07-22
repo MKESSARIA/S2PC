@@ -31,7 +31,10 @@ class Hr_Payslip(models.Model):
                     "HSUPP130",
                     "TDIM40",
                     "HSUPP100",
-                    "HSN500",
+                    "TNH30",
+                    "TNH50",
+                    "HSUPPEXO30",
+                    "HSUPPEXO50",
                 ]:
                     work_entries = self.env["hr.work.entry"].search(
                         [
@@ -71,26 +74,27 @@ class Hr_Payslip(models.Model):
                         if self.env.ref(
                             "alpha_payslip.hs_type_nuit_30"
                         ).id in work.type_hs_ids.mapped("id"):
-                            if line["code"] == "HSN500":
+                            if line["code"] == "TNH30":
                                 line["quantity"] += work.duration
                         if self.env.ref(
                             "alpha_payslip.hs_type_nuit_50"
                         ).id in work.type_hs_ids.mapped("id"):
-                            if line["code"] == "HS8500":
+                            if line["code"] == "TNH50":
                                 line["quantity"] += work.duration
                         if self.env.ref(
                             "alpha_payslip.hs_exonere_30"
                         ).id in work.type_hs_ids.mapped("id"):
-                            if line["code"] == "HS8580":
+                            if line["code"] == "HSUPPEXO30":
                                 line["quantity"] += work.duration
                         if self.env.ref(
                             "alpha_payslip.hs_exonere_50"
                         ).id in work.type_hs_ids.mapped("id"):
-                            if line["code"] == "HS8580":
+                            if line["code"] == "HSUPPEXO50":
                                 line["quantity"] += work.duration
 
                     line["amount"] = line["quantity"] * self.contract_id.hourly_salary
                     line["total"] = line["quantity"] * self.contract_id.hourly_salary
+                    print(line)
                 demo.append((0, 0, line))
             payslip.write(
                 {
