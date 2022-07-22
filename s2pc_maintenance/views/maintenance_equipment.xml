@@ -9,6 +9,8 @@
 
                 <xpath expr="//field[@name='workcenter_id']" position="after">
                     <field name="etalon"/>
+                    <field name="internal_ref_equipment"/>
+
                 </xpath>
 
             </field>
