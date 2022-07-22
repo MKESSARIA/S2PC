@@ -196,9 +196,12 @@
                                         <span>Remise.%</span>
                                     </th>
                                     <th name="th_taxes" style="width:7%" class="text-center">PU net</th>
-                                    <th name="th_subtotal" style="width:10%" class="text-center">
+                                    <!--<th name="th_subtotal" style="width:10%" class="text-center">
                                         <span groups="account.group_show_line_subtotals_tax_excluded">Montant</span>
                                         <span groups="account.group_show_line_subtotals_tax_included">Montant HT</span>
+                                    </th>-->
+                                    <th name="th_subtotal" style="width:10%" class="text-center">
+                                        <span>Montant HT</span>
                                     </th>
 
                                 </tr>
@@ -241,13 +244,17 @@
                                                 <span t-esc="o.order_line[line].price_unit *  (1 - o.order_line[line].discount)"
                                                       t-options='{"widget": "float", "precision": 2}'/>
                                             </td>
-                                            <td name="td_subtotal" class="text-right o_price_total">
+                                            <!--<td name="td_subtotal" class="text-right o_price_total">
                                                 <span t-esc="o.order_line[line].price_subtotal"
                                                       t-options='{"widget": "float", "precision": 2}'
                                                       groups="account.group_show_line_subtotals_tax_excluded"/>
                                                 <span t-esc="o.order_line[line].price_total"
                                                       t-options='{"widget": "float", "precision": 2}'
                                                       groups="account.group_show_line_subtotals_tax_included"/>
+                                            </td>-->
+                                            <td name="td_subtotal" class="text-right o_price_total">
+                                                <span t-esc="o.order_line[line].price_subtotal"
+                                                      t-options='{"widget": "float", "precision": 2}'/>
                                             </td>
                                         </t>
                                         <t t-if="o.order_line[line].display_type == 'line_section'">
@@ -306,7 +313,7 @@
                                     <td></td>
                                     <td></td>
                                     <td class="allow_border" colspan="2">Montant HT</td>
-                                    <td class="allow_border">
+                                    <td class="allow_border text-right">
                                         <span t-esc="o.amount_untaxed"
                                               t-options='{"widget": "float", "precision": 2}'></span> <span
                                             t-esc="o.currency_id.symbol"/>
@@ -323,7 +330,7 @@
                                     <td></td>
                                     <td></td>
                                     <td class="allow_border" colspan="2">Montant TVA</td>
-                                    <td class="allow_border">
+                                    <td class="allow_border text-right">
                                         <span t-esc="o.amount_tax"
                                               t-options='{"widget": "float", "precision": 2}'></span> <span
                                             t-esc="o.currency_id.symbol"/>
@@ -339,7 +346,7 @@
                                     <td></td>
                                     <td></td>
                                     <td class="allow_border" colspan="2">Montant TTC</td>
-                                    <td class="allow_border">
+                                    <td class="allow_border text-right">
                                         <span t-esc="o.amount_total"
                                               t-options='{"widget": "float", "precision": 2}'></span> <span
                                             t-esc="o.currency_id.symbol"/>
