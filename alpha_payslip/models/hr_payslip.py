@@ -9,6 +9,25 @@ from datetime import datetime
 # raise UserError(f"La date d'entrée ")
 
 
+class HrPayslipLine(models.Model):
+    _inherit = "hr.payslip.line"
+
+    @api.depends("quantity", "amount", "rate")
+    def _compute_total(self):
+        for line in self:
+            if line.code not in [
+                "HSUPP150",
+                "HSUPP130",
+                "TDIM40",
+                "HSUPP100",
+                "TNH30",
+                "TNH50",
+                "HSUPPEXO30",
+                "HSUPPEXO50",
+            ]:
+                line.total = float(line.quantity) * line.amount * line.rate / 100
+
+
 class Hr_Payslip(models.Model):
     _inherit = "hr.payslip"
     commentaire = fields.Text(string="Commentaire", required=False)
@@ -48,6 +67,7 @@ class Hr_Payslip(models.Model):
                             ),
                         ]
                     )
+                    line["quantity"] = 0
                     for work in work_entries:
                         if self.env.ref(
                             "alpha_payslip.hs_type_50"
@@ -92,13 +112,12 @@ class Hr_Payslip(models.Model):
 
                     line["amount"] = line["quantity"] * self.contract_id.hourly_salary
                     line["total"] = line["quantity"] * self.contract_id.hourly_salary
-                    print(line)
                 lines.append((0, 0, line))
-            payslip.write(
+            payslip.sudo().write(
                 {
-                    "line_ids": lines,
                     "number": number,
                     "state": "verify",
+                    "line_ids": lines,
                     "compute_date": fields.Date.today(),
                 }
             )
@@ -137,9 +156,7 @@ class Hr_Payslip(models.Model):
         blacklisted_rule_ids = self.env.context.get(
             "prevent_payslip_computation_line_ids", []
         )
-
         result = {}
-
         for rule in sorted(self.struct_id.rule_ids, key=lambda x: x.sequence):
             if rule.id in blacklisted_rule_ids:
                 continue
