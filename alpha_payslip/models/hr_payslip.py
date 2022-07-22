@@ -124,7 +124,7 @@ class Hr_Payslip(models.Model):
                             if line["code"] == "HSUPPEXO30":
                                 line["quantity"] += work.duration
                                 line["amount"] += (
-                                    work.duration * self.contract_id.hourly_salary
+                                    work.duration * self.contract_id.hourly_salary * 1.3
                                 )
                         if self.env.ref(
                             "alpha_payslip.hs_exonere_50"
@@ -132,7 +132,7 @@ class Hr_Payslip(models.Model):
                             if line["code"] == "HSUPPEXO50":
                                 line["quantity"] += work.duration
                                 line["amount"] += (
-                                    work.duration * self.contract_id.hourly_salary
+                                    work.duration * self.contract_id.hourly_salary * 1.5
                                 )
 
                     line["total"] = line["amount"]
