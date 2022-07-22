@@ -68,50 +68,74 @@ class Hr_Payslip(models.Model):
                         ]
                     )
                     line["quantity"] = 0
+                    line["amount"] = 0
                     for work in work_entries:
                         if self.env.ref(
                             "alpha_payslip.hs_type_50"
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "HSUPP150":
                                 line["quantity"] += work.duration
+                                line["amount"] += (
+                                    work.duration * self.contract_id.hourly_salary
+                                )
                         if self.env.ref(
                             "alpha_payslip.hs_type_30"
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "HSUPP130":
                                 line["quantity"] += work.duration
+                                line["amount"] += (
+                                    work.duration * self.contract_id.hourly_salary
+                                )
                         if self.env.ref(
                             "alpha_payslip.hs_type_dimanche"
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "TDIM40":
                                 line["quantity"] += work.duration
+                                line["amount"] += (
+                                    work.duration * self.contract_id.hourly_salary
+                                )
                         if self.env.ref(
                             "alpha_payslip.hs_type_ferie"
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "HSUPP100":
                                 line["quantity"] += work.duration
+                                line["amount"] += (
+                                    work.duration * self.contract_id.hourly_salary
+                                )
                         if self.env.ref(
                             "alpha_payslip.hs_type_nuit_30"
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "TNH30":
                                 line["quantity"] += work.duration
+                                line["amount"] += (
+                                    work.duration * self.contract_id.hourly_salary
+                                )
                         if self.env.ref(
                             "alpha_payslip.hs_type_nuit_50"
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "TNH50":
                                 line["quantity"] += work.duration
+                                line["amount"] += (
+                                    work.duration * self.contract_id.hourly_salary
+                                )
                         if self.env.ref(
                             "alpha_payslip.hs_exonere_30"
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "HSUPPEXO30":
                                 line["quantity"] += work.duration
+                                line["amount"] += (
+                                    work.duration * self.contract_id.hourly_salary
+                                )
                         if self.env.ref(
                             "alpha_payslip.hs_exonere_50"
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "HSUPPEXO50":
                                 line["quantity"] += work.duration
+                                line["amount"] += (
+                                    work.duration * self.contract_id.hourly_salary
+                                )
 
-                    line["amount"] = line["quantity"] * self.contract_id.hourly_salary
-                    line["total"] = line["quantity"] * self.contract_id.hourly_salary
+                    line["total"] = line["amount"]
                 lines.append((0, 0, line))
             payslip.sudo().write(
                 {
