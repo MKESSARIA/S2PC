@@ -12,6 +12,11 @@
                     <field name="RCS"/>
                     <field name="CIF"/>
                 </field>
+                <xpath expr="//group[@name='sale']" position="inside">
+                    <field name="responsible_salesperson_id"/>
+                </xpath>
+
+
                 <field name="mobile" position="attributes">
                     <attribute name="required">True</attribute>
                 </field>
@@ -23,7 +28,6 @@
                 </field>
                 <xpath expr="//page[@name='sales_purchases']" position="attributes">
                     <attribute name="groups">sales_team.group_sale_manager</attribute>
-                    
                 </xpath>
 
             </field>
