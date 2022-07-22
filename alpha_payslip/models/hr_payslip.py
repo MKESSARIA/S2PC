@@ -24,7 +24,7 @@ class Hr_Payslip(models.Model):
                 "salary.slip"
             )
             # lines = [(0, 0, line) for line in payslip._get_payslip_lines()]
-            demo = []
+            lines = []
             for line in payslip._get_payslip_lines():
                 if line["code"] in [
                     "HSUPP150",
@@ -48,8 +48,6 @@ class Hr_Payslip(models.Model):
                             ),
                         ]
                     )
-                    line["amount"] = 0
-                    line["quantity"] = 0
                     for work in work_entries:
                         if self.env.ref(
                             "alpha_payslip.hs_type_50"
@@ -95,10 +93,10 @@ class Hr_Payslip(models.Model):
                     line["amount"] = line["quantity"] * self.contract_id.hourly_salary
                     line["total"] = line["quantity"] * self.contract_id.hourly_salary
                     print(line)
-                demo.append((0, 0, line))
+                lines.append((0, 0, line))
             payslip.write(
                 {
-                    "line_ids": demo,
+                    "line_ids": lines,
                     "number": number,
                     "state": "verify",
                     "compute_date": fields.Date.today(),
