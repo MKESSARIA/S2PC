@@ -19,7 +19,7 @@
 
     # any module necessary for this one to work correctly
     'depends': ['base', 's2pc_base', 's2pc_product', 'sale', 'sales_team', 'hr', 'purchase', 'mass_mailing',
-                'maintenance', 'hr_appraisal', 'stock'],
+                'maintenance', 'hr_appraisal', 'stock', "account", 'mrp', 'point_of_sale', 'product'],
 
     # always loaded
     'data': [
