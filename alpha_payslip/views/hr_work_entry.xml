@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='work_entry_type_id']" position="after">
                     <field name="is_hs" invisible="1" />
-                    <field name="type_hs_ids" widget="many2many_tags" string="Type HS" attrs="{'invisible': [('is_hs', '=', False)]}" />
+                    <field name="type_hs_ids" widget="many2many_tags" string="Type HS" attrs="{'invisible': [('is_hs', '=', False)] ,'required': [('is_hs', '=', True)]  }" />
                 </xpath>
             </field>
         </record>
