@@ -12,9 +12,9 @@
                     <field name="RCS"/>
                     <field name="CIF"/>
                 </field>
-                <xpath expr="//group[@name='sale']" position="inside">
+               <!-- <xpath expr="//group[@name='sale']" position="inside">
                     <field name="responsible_salesperson_id"/>
-                </xpath>
+                </xpath>-->
 
 
                 <field name="mobile" position="attributes">
