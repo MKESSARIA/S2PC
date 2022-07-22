@@ -69,12 +69,28 @@ class Hr_Payslip(models.Model):
                             if line["code"] == "HSUPP100":
                                 line["quantity"] += work.duration
                         if self.env.ref(
-                            "alpha_payslip.hs_type_nuit"
+                            "alpha_payslip.hs_type_nuit_30"
                         ).id in work.type_hs_ids.mapped("id"):
                             if line["code"] == "HSN500":
                                 line["quantity"] += work.duration
+                        if self.env.ref(
+                            "alpha_payslip.hs_type_nuit_50"
+                        ).id in work.type_hs_ids.mapped("id"):
+                            if line["code"] == "HS8500":
+                                line["quantity"] += work.duration
+                        if self.env.ref(
+                            "alpha_payslip.hs_exonere_30"
+                        ).id in work.type_hs_ids.mapped("id"):
+                            if line["code"] == "HS8580":
+                                line["quantity"] += work.duration
+                        if self.env.ref(
+                            "alpha_payslip.hs_exonere_50"
+                        ).id in work.type_hs_ids.mapped("id"):
+                            if line["code"] == "HS8580":
+                                line["quantity"] += work.duration
 
                     line["amount"] = line["quantity"] * self.contract_id.hourly_salary
+                    line["total"] = line["quantity"] * self.contract_id.hourly_salary
                 demo.append((0, 0, line))
             payslip.write(
                 {
